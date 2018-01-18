@@ -1,0 +1,92 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> APRIL 1985</title><meta name="description" content="A Blog Powered By Hexo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/prontera.css"><link rel="search" type="application/opensearchdescription+xml" href="http://www.april1985.com/atom.xml" title="APRIL 1985"></head><body><header class="feature-header"><nav class="component-nav"><ul><div class="logo-container"><a href="/"><h2 class="title">APRIL 1985</h2></a></div><a href="/" target="_self" class="li component-nav-item"><p>现在</p></a><a href="/archives" target="_self" class="li component-nav-item"><p>曾经</p></a><ul class="shortcut-icons"><a href="https://github.com/derekhe" target="_blank"><img src="/images/github.svg" class="icon"></a><a href="/atom.xml" target="_blank"><img src="/images/rss.svg" class="icon"></a></ul></ul></nav></header><main class="container"><div id="body-container"><div id="post-list" class="left"><div class="home post-list"><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2005-02-18-mobile-phone-text-messaging-each-other-pdu-encoding-phs-note/" class="post-title-link">手机——小灵通互发短信PDU编码注意事项</a></h2><div class="post-info">Feb 18, 2005</div><div class="post-content"><p>昨天花了一些时间解决了网友GSM Modem与小灵通发送短信的问题，发现是由于在小灵通号码之前默认加了“+”的缘故。</p>
+<p>在 PDU编码中有一个Address Field，其中有一个Address Type段，其值在很多文章里面说固定为0x91。其实这是不对的。按照3GPP 23040-650对于这个字段的说明，0x91是国际通用的，也就是在号码之前加一个“+”号。但对于现在小灵通的 106+区号+号码 这样的格式，将Address Type固定为0x91就变成了 +106+区号+号码 格式，短信中心可能会认为是国际短信，可能发送到其他国家，也有可能发送失败。</p>
+<p>所以，对于这种情况，将0x91改成0x81，即可解决。</p>
+<p>对于程序的流程，希望能够增加“+”号的判断。如果号码前面有“+”，AddressType值为0x91，否则值为0x81。</p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2005-02-17-net-platform-for-mobile-phone-management-software-8-vcard-vnote-vcalender-format-description/" class="post-title-link">.net平台手机管理软件开发(8)—— vCard、vNote、vCalender格式简介</a></h2><div class="post-info">Feb 17, 2005</div><div class="post-content"><p>(八)  vCard、vNote、vCalender格式简介<br>vCard称为电子商务卡片，主要用于记录通讯薄的联系人信息等，方面不同设备之间的数据交换。自笔者的M55手机中，可以发送一条短信到对方，其中包含了vCard格式的联系人信息，西门子其他型号的手机可以接收解码存储。另外通过手机红外线传输到电脑上的联系人也是用的vCard格式。如果安装了Outlook，则可以直接打开vCard并看到其包含的信息。下面主要简要介绍一下vCard格式，其他vNote、vCalender格式和vCard相近，就不再赘述。更详细的资料请参考vCard Specification，在笔者主页有相关下载。</p>
+<p>关于vCard、vNote、vCalender的.Net简单编码解码器请参阅SIEMENS SUPPORT TOOL源代码中的IrMC部分。<br>vCard Object(vCard对象)</p>
+<p>一个vCard数据流可以包含一个或者多个vCard Object。在数据流中一个vCard Object定义为以“BEGIN:VCARD”开始并以“END:VCARD”结束的数据。如果只有到达了数据流尾都没有出现“END:VCARD”，则整个vCard Object包含从“BEGIN:VCARD”开始到数据流结束的地方。<br>vCard Property(vCard属性)<br>vCard是一个或多个Property的集合。一个Property是唯一命名的值。一系列的Property可以在vCard中成为一组。<br>vCard Property的格式如下：<br>PropertyName[‘;’ PropertyParameters]’:’PropertyValue</p>
+<p>注：<br>.   PropertyName及PropertyParameters不区分大小写。<br>.   PropertyParameters可选，可以为零个或多个，与ProperyName以分号相隔，与PropertyValue以冒号相隔。<br>.   vCard可以分多行呈现。由于在这个软件里面应用得不多，所以笔者也没有钻研具体实现方法。可以参考vCard Specification。</p>
+<p>例如TEL;HOME;+86111222333其PropertyName为TEL，PropertyParameters为HOME，PropertyValue为+86111222333。<br>Encoding(编码)<br>vCard默认的编码方式是7-Bit。默认编码方式可以使用ENCODING属性参数(Property parameter)改变。其值为可以为BASE64；QUOTED-PRINTABLE；8BIT。这个参数可以用在任何的Property里。</p>
+<p>例如：<br>X-ESI-CATEGORIES;CHARSET=UTF-8;ENCODING=QUOTED-PRINTABLE:=E5=AE=B6=E4=BA=BA</p>
+<p>下面简要说明QUOTED-PRINTABLE编码方式，更为详细的资料请参考相关文档：<br>ASCII可显示字符基本保持不变。Unicode字符或者UTF8编码字符使用等号加其对应16进制代码表示。例如上述CHARSET为UTF8的字符=E5=AE=B6=E4=BA=BA对应的UTF8编码0xE5，0xAE，0xB6代表中文“家”，其他的代表“人”。另外如果其中有可显示ASCII码，保持原样输出。</p>
+<p>例如ENCODING=QUOTED-PRINTABLE:Home=E5=AE=B6People=E4=BA=BA</p>
+<p>解码后为“Home家People人”。<br>Character Set(字符集)</p>
+<p>默认的字符集是ASCII。可以通过CHARSET参数改变默认的字符集。其参数可取的值为所有IANA(Internet Assigned Numbers Authority)注册的字符集。这个参数可以用于任何Property，但某些Property并不起作用。</p>
+<p>例如：<br>X-ESI-CATEGORIES;CHARSET=UTF-8;ENCODING=QUOTED-PRINTABLE:=E5=AE=B6=E4=BA=BA<br>vCard例子：<br>BEGIN:VCARD<br>VERSION:2.1<br>X-IRMC-LUID:1017646<br>X-ESI-CATEGORIES;CHARSET=UTF-8;ENCODING=QUOTED-PRINTABLE:=E5=AE=B6=E4=BA=BA<br>N:test<br>ADR:;;Street;city;;610000;country<br>ORG:company<br>TEL;HOME:123456<br>TEL;WORK:123456<br>TEL;CELL:123456<br>TEL;FAX:123456<br>TEL;FAX;HOME:123456<br>EMAIL;INTERNET:a@a.ao<br>EMAIL;HOME;INTERNET:b@g<br>URL:http<br>BDAY:1985-04-23<br>END:VCARD</p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2005-02-17-net-platform-for-mobile-phone-management-software-7-irmc-introduction/" class="post-title-link">.net平台手机管理软件开发(7)——IrMC简介</a></h2><div class="post-info">Feb 17, 2005</div><div class="post-content"><p>(七)  IrMC简介</p>
+<p>要实现通讯薄、日历、便签的同步，需要用到IrDA协议里面的IrMC部分。<br>IrMC全称为Ir Mobile Communications。它定义了利用IR无线传输的设备之间通讯的规则。IrMC协议文档详细叙述了IrMC的方方面面，可以在我的主页(<a href="http://dream-world.nease.net)下载到PDF版本。" target="_blank" rel="noopener">http://dream-world.nease.net)下载到PDF版本。</a></p>
+<p>下面主要讲述我在开发当中所用到的部分以及实现方法。更为详细的资料请参考IrMC协议。<br>Phonebook</p>
+<p>在手机软件桌面端通讯薄的管理是整个软件的必备功能之一，利用其信息可以方便的和Outlook等软件实现同步，实现更强大的功能。</p>
+<p>通讯薄的管理分为读取、删除、增添、修改。通过这几个功能的组合可以实现更为强大的同步功能。下面分条概述。<br>l         读取</p>
+<p>n         读取所有的Entry</p>
+<p>使用OBEX的GET命令取得telecompb.vcf文件。</p>
+<p>得到的的文件是一个vCard文件，里面包含了所有的通讯薄。其格式为vCard格式。关于vCard的简介及编码器解码器见后。下面给出一个范例：<br>BEGIN:VCARD<br>VERSION:2.1<br>X-IRMC-LUID:1017646<br>X-ESI-CATEGORIES;CHARSET=UTF-8;ENCODING=QUOTED-PRINTABLE:=E5=AE=B6=E4=BA=BA<br>N:test<br>ADR:;;Street;city;;610000;country<br>ORG:company<br>TEL;HOME:123456<br>TEL;WORK:123456<br>TEL;CELL:123456<br>TEL;FAX:123456<br>TEL;FAX;HOME:123456<br>EMAIL;INTERNET:a@a.ao<br>EMAIL;HOME;INTERNET:b@g<br><a href="http://blog.csdn.net/hesicong/admin/http" target="_blank" rel="noopener">URL:http</a><br>BDAY:1985-04-23<br>END:VCARD</p>
+<p>也可以通过X-IRMC-LUID所给的LUID号码直接取得相应的vCard。</p>
+<ol>
+<li>读取指定LUID的Entry</li>
+</ol>
+<p>使用OBEX的GET命令取得telecompbluidxxxx.vcf，其中xxxx代表了LUID号码。</p>
+<p>得到的依然是一个vCard文件，只不过只包含特定LUID号码的vCard信息。可以简单的通过Outlook查看vCard所包含的信息。</p>
+<p>l         删除</p>
+<p>欲删除一个Entry</p>
+<ol>
+<li>连接到IrMC_Sync_Service(发送0x80, 0x0, 0x13, 0x10, 0x0, 0x40, 0x6, 0x46, 0x0, 0xC, 0x49, 0x52, 0x4D, 0x43, 0x2D, 0x53, 0x59, 0x4E, 0x43)使手机处于同步状态。</li>
+<li><p>得到ChangeCount<br>ChangeCount是手机里面储存修改次数的一个数值，主要用于同步。具体相关资料请参考IrMC协议。</p>
+</li>
+<li><p>构建数据包。<br>Opcode：PUT<br>NameHeader：xxxx.vcf(xxxx为欲删除的entry的LUID)<br>AppParam：0x11，ChangCount字符串形式长度(Integer)，ChangeCount的ANSI形式</p>
+</li>
+<li>使用OBEX的PUT命令，传输一个xxxx.vcf(xxxx指LUID)空文件到telecompbluid覆盖即可。</li>
+<li>发送0x81, 0x0, 0x3断开IrMC_Sync_service</li>
+</ol>
+<p>l         添加</p>
+<p>欲添加一个文件：</p>
+<ol>
+<li>连接到IrMC_Sync_Service</li>
+<li><p>得到ChangeCount</p>
+</li>
+<li><p>构建数据包<br>Opcode：PUT<br>NameHeader：.vcf<br>AppHeader：0x11，ChangeCount字符串长度(Interger)，ChangCount的ANSI形式<br>Body或者End-of-Body Header：vcf文件内容</p>
+</li>
+<li><p>OBEX的PUT命令上传到telecompb.vcf文件即可。</p>
+</li>
+</ol>
+<p>注意：文件名取名为“.vcf”。</p>
+<ol>
+<li>发送0x81, 0x0, 0x3断开IrMC_Sync_service</li>
+</ol>
+<p>l         修改</p>
+<p>修改过程与添加过程相似，只是将文件名改为欲修改的vCard的LUID.vcf就行了。</p>
+<p>Notes</p>
+<p>便签是大多数手机都提供的功能，能够方便的记录简短的信息。在我的M55手机上能够储存150Byte的信息，也就是150个英文或者75个汉字。软件通过管理便签可以与Outlook等软件同步，实现更高级的功能。</p>
+<p>管理Notes的方法和Phonebook类似。得到全部Notes的vNote只需要获取telecomnt.vnt即可。删除、添加、修改只需要把telecompbluid改为telecomntluid即可。在此不再赘述。<br>Calendar</p>
+<p>日历功能提供了事件提醒功能，分为重要记事(vEvent)和任务(vTodo)。通过管理日历，同样可以实现和Outlook同步，实现电脑和手机的同步。</p>
+<p>管理Calendar的方法和Phonebook类似。得到全部vCalendar只需要获取telecomcal.vcs。删除、添加、修改只需要把telecompbluid改为telecomcalluid即可。在此不再赘述。</p>
+<p>但值得注意的是vCalendar的结构<br>BEGIN:VCALENDAR<br>VERSION:1.0<br>BEGIN:VEVENT<br>….<br>END:VEVENT<br>BEGIN:VTODO<br>…<br>END:VTODO<br>END:VCALENDAR</p>
+<p>完整的vCalender包含了至少一个vEvent或者一个vTodo，因此在添加、修改vEvent、vTodo时要将其补充为一个完整的vCalender结构，否则服务端会拒绝操作。</p>
+<p>遇到的问题：</p>
+<p>在实际操作中，遇到问题最多的地方在Phonebook部分。我的手机第一次同步的时候经常出现数据库被锁的情况，用SiMoCo读取也是一样，说明是手机拒绝写操作。这时候关闭手机再重新启动就好了。至于原因，我还没有搞清楚，希望能有高人指点。</p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2005-02-14-net-platform-for-mobile-phone-management-software-6-obex-application-file-transfer-part-of-the/" class="post-title-link">.net平台手机管理软件开发(6)OBEX应用——文件传输部分</a></h2><div class="post-info">Feb 14, 2005</div><div class="post-content"><p>(六) OBEX应用——文件传输部分</p>
+<p>在手机数据传输方面基本OBEX应用分为<br>l 文件传输<br>l IrMC同步</p>
+<p>文件传输又可以细分为以下基本操作<br>l 初始化连接<br>l 断开连接<br>l 设置路径<br>l 取得目录信息<br>l 创建目录<br>l 上传下载文件<br>l 删除文件或空目录</p>
+<p>在笔者的软件当中设计了OBEX这个类，里面包含了以上所有的基本操作。另外针对M55的服务端的特殊性又设计了更名、取得磁盘空间信息、移动、拷贝文件的功能。具体请参考源代码。</p>
+<p>下面具体讲述各个操作的细节。<br>l 初始化连接</p>
+<p>初始化连接包括了使手机进入OBEX状态再到发送Connect指令的一系列过程。具体流程参考下图。<br>ATÆAT^SQWE=0ÆAT^SQWE=3ÆConnectÆ连接到Folder-Listing Service</p>
+<p>其中AT^SQWE=0和AT^SQWE=3是西门子特有的隐藏的AT指令，甚至在官方的AT指令集里面都没有提到。其作用是初始化手机到OBEX模式。</p>
+<p>发送Connect指令收到手机回复以后确定Max Packet Length等参数。最后连接到Folder-Listing Service进行文件操作。如果需要IrMC同步的话，在Connect后直接连接到IrMC Sync Service即可，手机立刻进入同步模式，所有的应用程序退出。</p>
+<p>在笔者的程序中当中首先使用AT指令确定手机当前的工作，如果超时，尝试发送+++并等待1秒钟以便手机从不正常的OBEX状态中退出。然后在此发送AT，成功后即进行文件操作，否则引发一个错误。<br>l 断开连接</p>
+<p>这里的断开连接是指从OBEX模式退出到AT状态中。在AT指令中，连续发送三个0x2B然后等待一秒钟以上即可退出数据模式进入常规AT模式。<br>l 设置路径</p>
+<p>程序中使用SetPath操作设置路径。需要注意的是，可以设计两种风格的过程：一种使用绝对路径，另一种使用相对路径。</p>
+<p>对于手机而言，经笔者实践证明，使用绝对路径要比使用相对路径方便，而且更准确，但效率上稍逊，特别是在多层目录的情况下。由于手机没有能够返回当前路径的方法，所以相对路径总难以控制，只有通过程序控制，极容易出现错误。所以建议使用绝对路径。</p>
+<p>如果使用绝对路径，那么路径名将呈现path1path2这种形式。首先回到根目录，然后一级一级的到达目的。在笔者的OBEX类当中，可以看到BacktoRoot这个过程。其作用就是把当前程序路径切换到根目录以免引起混乱。<br>l 取得目录信息</p>
+<p>要取得一个目录的文件信息可以用发送Get指令。该Get指令需要一个TypeHeader，其值为x-obex/folder-listing</p>
+<p>随后服务端会返回一个xml文件，包含了整个目录的信息。例如子目录名、文件名、大小、最后修改时间。再通过xml解析后就会得到目录信息。<br>l 创建目录</p>
+<p>当SetPath的Flags的Bit1设为1并且无法找到目录时，服务端会创建这个目录并进入。</p>
+<p>请注意，再次使用SetPath并将Flags的Bit0设为1返回上层目录，否则容易引起混乱。<br>l 上传下载文件</p>
+<p>使用Put和Get命令可以实现上传和下载文件。注意所有的文件操作都在SetPath所指定的目录下进行。</p>
+<p>使用Put命令实现上传时，至少需要提供NameHeader，BodyHeader，一般还要提供LengthHeader，DateTimeHeader。大文件传输需要正确处理BodyHeader，不能超出了服务端最大所能接收的Packet的大小，否则会出现错误。</p>
+<p>需要注意的是如果当前文件存在，那么Put命令不会覆盖已有的文件而是追加，导致错误。传输文件之前需要首先删除同名文件。</p>
+<p>使用Get命令实现下载时，只需要提供NameHeader即可。具体例子参考上一节。<br>l 删除文件或空目录</p>
+<p>使用Put命令，其NameHeader指定为文件名或目录名并将BodyHeader设置为空即可。</p>
+<p>非空目录无法删除，会返回错误。</p>
+<p>西门子手机还有移动、拷贝等功能，具体实现方法请参阅OBEX源代码。</p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2005-02-14-net-platform-for-mobile-phone-management-software-5-obex-introduction/" class="post-title-link">.net平台手机管理软件开发(5)——OBEX介绍</a></h2><div class="post-info">Feb 14, 2005</div><div class="post-content"><p>No Content Found</p>
+</div></article></div></div></div><div id="sidebar" class="left"><div id="about-panel"><div class="info"><div class="title">he.sicong</div><div class="url">http://www.april1985.com</div><div class="bio"></div></div><img src="/images/avatar.png" class="avatar"></div><div id="friend-links-panel"><div class="panel-title"><p>链接</p></div><a target="_blank" class="link-item"><div class="link-container"><div class="site-name">GitHub</div><div class="site-desc">http://github.com/derekhe</div></div></a><a target="_blank" class="link-item"><div class="link-container"><div class="site-name">简书</div><div class="site-desc">http://www.jianshu.com/u/b1e713e56ea6</div></div></a><a target="_blank" class="link-item"><div class="link-container"><div class="site-name">LinkedIn</div><div class="site-desc">https://www.linkedin.com/in/sicong-he-56a95437/</div></div></a></div></div></div><div class="clear"></div></main><footer class="footer-container"><div class="paginator"><a href="/page/135/" class="prev">上一页</a><a href="/page/137/" class="next">下一页</a></div><div class="copyright"><p>© 2008 - 2018 <a href="http://www.april1985.com">he.sicong</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/AngryPowman/hexo-theme-prontera" target="_blank">hexo-theme-prontera</a>.</p></div></footer><script>var _mtac = {}; (function() {     var mta = document.createElement("script"); mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.2";    mta.setAttribute("name", "MTAH5");    mta.setAttribute("sid", "500490740");    var s = document.getElementsByTagName("script")[0];    s.parentNode.insertBefore(mta, s);})();</script></body></html>

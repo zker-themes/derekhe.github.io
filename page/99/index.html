@@ -1,0 +1,54 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> APRIL 1985</title><meta name="description" content="A Blog Powered By Hexo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/prontera.css"><link rel="search" type="application/opensearchdescription+xml" href="http://www.april1985.com/atom.xml" title="APRIL 1985"></head><body><header class="feature-header"><nav class="component-nav"><ul><div class="logo-container"><a href="/"><h2 class="title">APRIL 1985</h2></a></div><a href="/" target="_self" class="li component-nav-item"><p>现在</p></a><a href="/archives" target="_self" class="li component-nav-item"><p>曾经</p></a><ul class="shortcut-icons"><a href="https://github.com/derekhe" target="_blank"><img src="/images/github.svg" class="icon"></a><a href="/atom.xml" target="_blank"><img src="/images/rss.svg" class="icon"></a></ul></ul></nav></header><main class="container"><div id="body-container"><div id="post-list" class="left"><div class="home post-list"><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2007-03-16-bought-mathematics-books-u0026quot3d-mathematics-graphics-and-game-developmentu0026quot/" class="post-title-link">买了本数学书－《3D数学基础：图形与游戏开发》</a></h2><div class="post-info">Mar 16, 2007</div><div class="post-content"><p>真正的数学书，从最简单的1D开始讲起，然后开始深入坐标系、矩阵，四元数等等。我有这本书的PDF格式的英文版。最近做项目突然发现数学知识有些欠火，就拿出《OpenGL超级宝典(第三版)》参看了后面的推荐书籍：</p>
+<ol>
+<li>3D Computer Graphics: Alan Watt. Addison-Wesley, 1993. </li>
+<li>3D Math Primer for Graphics and Game Development: Fletcher Dunn and Ian Parbery. Wordware Publishing, 2002. </li>
+<li>Advanced Animation and Rendering Techniques: Theory and Practice: Alan Watt and Mark Watt Addison-Wesley,1992. </li>
+<li>Open Geometry: OpenGL + Advanced Geometry: Georg Glaeser and Hellmuth Stachel. Springer-Verlag, 1999. </li>
+<li>Mathematics for 3D Game programming &amp; Computer Graphics: Eric Lengyel. Charles River Media, 2001. </li>
+</ol>
+<p>看了看第二本还不错，英文版讲得也很详细。只是老在电脑上看EBOOK感觉很累的样子，就查了一下中文版的，42块钱，便宜～～到书店拿到书， 打7. 6折，31. 9元书到手。</p>
+<p>中文版还是很朴实的，清华大学出版社的，378页看起来比较薄，但是含金量很足。</p>
+<p>晚上抽空看了看四元数的部分，讲得不错，比起“真正的数学书”还要好一点点，没有那么多烦人的公式，用一种浅显的方式讲述了数学原理。</p>
+<p>～～～下雨了～～～～收衣服～～～～睡觉～～～～</p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2007-03-16-my-programming-tips/" class="post-title-link">My programming Tips</a></h2><div class="post-info">Mar 16, 2007</div><div class="post-content"><p>虽然我不是编程专家，也不是行家，但编程还是有点点经验了，还是说说我的Tips。</p>
+<ul>
+<li>学会一个源代码管理工具，做实际项目的时候就知道他的用处了。推荐Subversion</li>
+<li>了解Linux的一些基本知识，学会在Linux下编译和运行代码。推荐Ubuntu</li>
+<li>学会一个写文档的工具。当然不仅仅是Word，Latex也是必要的。另外自动文档生成工具例如Doxygen也是必要的。</li>
+<li>多逛逛论坛。如果经常用一个开源库，订阅mailing-list。</li>
+<li>独立思考，问问题找到核心(关键字)。问问题之前先搜索。当然，必要的时候要训练搜索的技能。推荐google和baidu的搜索帮助，或者首先搜索如何能够更好的搜索。</li>
+<li>学好英语。这个不用多说。</li>
+<li>不要吝舍自己的嘴，和朋友讨论他们遇到的编程问题。</li>
+<li>尝试发表自己的文章。写博客也是一个交流的途径，但要经常写，不要半途而废。或许某一天你的文章会对某个人产生关键性的作用。</li>
+<li>吃好睡好休息好锻炼好。</li>
+<li>有一个明确的目标。</li>
+</ul>
+<p>写了10条，都是随便想到一些，姑且作为自己的TIPS吧：)</p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2007-03-15-write-programs-with-doxygen-comments/" class="post-title-link">用doxygen写程序注释</a></h2><div class="post-info">Mar 15, 2007</div><div class="post-content"><p>接触doxygen是从接触lib3ds库开始的，这个库的源代码使用doxygen作为文档的注释，很爽，直接使用工具就可以生成一个非常漂亮的文档。所以我也开始学着用doxygen作注释。</p>
+<p>很简单，一个文件的开始写文档的头</p>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">/*! <span class="built_in">file</span>: filename</span><br><span class="line">brief: This <span class="keyword">is</span> a <span class="built_in">file</span></span><br><span class="line">author: hesicong</span><br><span class="line">.....</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+<p>对于类</p>
+<figure class="highlight monkey"><table><tr><td class="code"><pre><span class="line">//! <span class="class"><span class="keyword">Class</span> <span class="title">Description</span></span></span><br></pre></td></tr></table></figure>
+<p>对于函数</p>
+<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">/*! <span class="keyword">Function</span></span><br><span class="line">parm parm1 description1</span><br><span class="line">parm parm2 description2</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+<p>等等，感觉很简单的东西，就可以生成很强大的文档，包括类的继承关系、函数的调用关系都很清楚～～～</p>
+<p>唉，说了半天，自己去尝试一下～～～～</p>
+<p>另外，一直用Subversion管理源代码，很爽～！</p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2007-03-15-miracle-unicom-quarters-these-days-even-a-free-internet/" class="post-title-link">奇迹竟然宿舍联通这几天免费上网了！</a></h2><div class="post-info">Mar 15, 2007</div><div class="post-content"><p>奇迹啊，都几天了都无法上网，说实在我已经习惯了没有网络的生活。学校的网络还是垃圾，宿舍的这几天就根本无法用。</p>
+<p>好了，大家都在投诉投诉，联通终于“发发善心”，在315前夕为我们开通了免费的网络，不用忍受“服务器故障”的骚扰了。</p>
+<p>不管别人怎么评价吧，好歹可以写写博客了。我不去闹，这些事情姑且还是站在旁边看看，天知道你去参加了什么“游行”活动会得到怎样的恶果。闭嘴做事情吧。</p>
+<p>昨天开始练英语了，从VOA Special English开始，听一句跟读一句，昨天还有些跟不上节奏，我想可能是时间比较短，没有适应。今天晚上吃完饭玩了一会儿，就开始听读英语了，顺便到操场上走了几圈。呵呵，发现一个有趣的现象，绝大部分操场上跑步的人都是中年或者老年人，还没有看到几个学生模样的。</p>
+<p>还是不错，读了一个半小时，感觉英语跟读比昨天流畅了，但是稍微长点的句子还是不好复述。还需要继续！</p>
+<p>坚持！</p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2007-03-13-the-network-has-finally-broken-a-little-better/" class="post-title-link">破网络终于要好一点了~</a></h2><div class="post-info">Mar 13, 2007</div><div class="post-content"><p>刚刚开学不管是学校的网络还是宿舍的网络都要把人气得想跳楼(声明我没有心理障碍)，学校由于使用代理上网那个网速啊能把人气死；最近宿舍联通的认证服务器又出问题了，结果还是上不了网。还好，没有网络还是能够生活，幸好最近解决的问题还不需要网络的协助，除了写博客以外……</p>
+<p>快想想这些天都干了写什么……~恩……</p>
+<p>首先，看到lulu的程序逐渐完善感到很高兴，我的程序有了再次利用的价值</p>
+<p>再次，就是我的弯管机的程序解决了很多的问题，现在能够处理3DS文件里面的重心数据了，更加熟悉计算机图形学里面矩阵的变换。赫赫，还要感谢lulu经常给我鼓励哦~</p>
+<p>还有呢……上个星期六回家到崇州去玩，到庙里看了原来的老邻居，看了梨花，顺便锻炼了身体，赫赫。就是之前把小鸭和鹏鹏的生日忘了(五雷轰顶)，555，对不起哈……~</p>
+<p>还有一些杂事，就不写了，具体想写的也因为网络问题一时没有写上来……然后就懒惰了不想写了：)</p>
+<p>那么接下来要做点什么呢？</p>
+<p>这个英语的问题我已经说了很久了，还没有具体的安排出来，尽快吧~<br>16个俯卧撑……一天加一个……二十年后无时无刻俯卧撑</p>
+<p>玩……听说C&amp;C3已经压盘了，期待啊……</p>
+<p>吃……吃好哦……</p>
+<p>赫赫……</p>
+</div></article></div></div></div><div id="sidebar" class="left"><div id="about-panel"><div class="info"><div class="title">he.sicong</div><div class="url">http://www.april1985.com</div><div class="bio"></div></div><img src="/images/avatar.png" class="avatar"></div><div id="friend-links-panel"><div class="panel-title"><p>链接</p></div><a target="_blank" class="link-item"><div class="link-container"><div class="site-name">GitHub</div><div class="site-desc">http://github.com/derekhe</div></div></a><a target="_blank" class="link-item"><div class="link-container"><div class="site-name">简书</div><div class="site-desc">http://www.jianshu.com/u/b1e713e56ea6</div></div></a><a target="_blank" class="link-item"><div class="link-container"><div class="site-name">LinkedIn</div><div class="site-desc">https://www.linkedin.com/in/sicong-he-56a95437/</div></div></a></div></div></div><div class="clear"></div></main><footer class="footer-container"><div class="paginator"><a href="/page/98/" class="prev">上一页</a><a href="/page/100/" class="next">下一页</a></div><div class="copyright"><p>© 2008 - 2018 <a href="http://www.april1985.com">he.sicong</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/AngryPowman/hexo-theme-prontera" target="_blank">hexo-theme-prontera</a>.</p></div></footer><script>var _mtac = {}; (function() {     var mta = document.createElement("script"); mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.2";    mta.setAttribute("name", "MTAH5");    mta.setAttribute("sid", "500490740");    var s = document.getElementsByTagName("script")[0];    s.parentNode.insertBefore(mta, s);})();</script></body></html>

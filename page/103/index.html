@@ -1,0 +1,41 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> APRIL 1985</title><meta name="description" content="A Blog Powered By Hexo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/prontera.css"><link rel="search" type="application/opensearchdescription+xml" href="http://www.april1985.com/atom.xml" title="APRIL 1985"></head><body><header class="feature-header"><nav class="component-nav"><ul><div class="logo-container"><a href="/"><h2 class="title">APRIL 1985</h2></a></div><a href="/" target="_self" class="li component-nav-item"><p>现在</p></a><a href="/archives" target="_self" class="li component-nav-item"><p>曾经</p></a><ul class="shortcut-icons"><a href="https://github.com/derekhe" target="_blank"><img src="/images/github.svg" class="icon"></a><a href="/atom.xml" target="_blank"><img src="/images/rss.svg" class="icon"></a></ul></ul></nav></header><main class="container"><div id="body-container"><div id="post-list" class="left"><div class="home post-list"><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2007-02-10-5200-miraculously-revived/" class="post-title-link">5200奇迹般死灰复燃！</a></h2><div class="post-info">Feb 10, 2007</div><div class="post-content"><p>躺了3年的丽台FX5200终于重获天日。说是奇怪那真的是奇怪，就貌似木乃伊复活一样神奇。</p>
+<p>这张显卡是我高中毕业的时候花了600多买的显卡，当时还算是搭上了DX9的列车。可好戏不长，搬家那天我顺便打扫一下电脑，居然显卡就不能用了。这个显卡设计得比较好，卡上面有三个灯，分别对应ERR、PWON和AGP4X/8X，可以很直观的看到显卡的工作状态。然而，一开机，就是红灯，ERR。主板上显示1D，我也不知道具体是什么问题，只是打电话到客服，客服告诉我显卡出问题了。唉…………~修一下看能不能修好。</p>
+<p>然后就拿到电脑城去修，结果插到别人电脑上也是红灯，显卡核心没有温度，断定为核心烧毁。当时想想也有可能，静电嘛。</p>
+<p>然后就买了昂达的5700，5200就躺在了柜子里面。</p>
+<p>今天想用一下改装过的5700测试程序的问题，结果5700插上主板也是报告1D错误，妈啊，不会这个5700也烧了吧。前不久我才用过的啊！那我那个5200插上呢？还是这样，红……拿出那个老古董TNT2，可以启动。</p>
+<p>那就到那个120块钱的电脑上面去看看5700到底是好是坏，奇怪，一点就亮。那这个5200呢？插上去，我以为要“红”，结果一“绿”，启动成功~!!!!!咋个回事呢…………!!!我又把5200插回磐正的主板上，奇迹般现在不“红”了！基本工作正常！郁闷哦，之前这个5200我还想既然坏了，那就拆零件当焊板玩的，结果，竟然是一个好的~!!!!!!!!!!!</p>
+<p>把6600GT装上，成功启动，网上查了查，原来是说Initial EARLY_PM_INIT switch，具体也不知道是什么开关怎么了。磐正8RDA型号很多主板都遇到了这样的问题，然后就是显卡不能用了。真是奇怪。</p>
+<p>有些人说是和IDE冲突什么的，我就把把CMOS复位了，关闭所有能够关的，取下6600GT然后插上5700，还是一样的1D！！！</p>
+<p>我分析，6600GT因为在没有插外接电源的情况下是2D工作，所以耗能很少，主板AGP供电能够启动。TNT2也是如此。但是520. 5700启动时耗能较多，可能是AGP供电部分出了问题(网上提到很可能是电解电容电容失效了)而不能启动。原因基本上想通了，就在BIOS里面把AGP电压从1.5V提升到1.6V，再把5700换上去，结果成功启动。但5200还是无法启动，难道1.6V还不够。为了安全，我也没有再提升电压，只要有5700用就足够了。</p>
+<p>好累，搞得一手都是灰…………~还不知道我这个主板能够坚持好久哦…………睡觉…………~</p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2007-02-10-opengl-mode-efficiency-of-gl_select/" class="post-title-link">OpenGL的GL_Select模式的效率问题</a></h2><div class="post-info">Feb 10, 2007</div><div class="post-content"><p>每一本OpenGL入门的书都会讲到OpenGL的Select模式，它采用一种方法使得可以获取当前鼠标点选的几何图形。简单的来说这种方式就是首先调整Projection矩阵，使得你透过从鼠标点选附近的一个正方形(大小可设置)看到的世界。然后开始绘制，当每一次绘制的时候都会判断你会不会看到。如果看到，那么，你就是选择了这个几何图形了。更为具体的过程可以参见相关的书籍。</p>
+<p>我重点要提到的是它的效率。</p>
+<p>今天我在弯管机程序里面多加了一些代码，实现可以选择机器的各个部件。但是发现每次点选的时候反应速度很慢，以至于我可以看到明显的停顿。而在直接渲染的时候就没有这个问题，相当流畅。最后我用PerformanceCounter计时，一步一步的找问题的根源，发现在glRenderMode(GL_Select)设置以后，在执行相同的绘图指令会相当的慢。经我测试，在我6600GT显卡上，使用官方93.50驱动程序，渲染相同的画面，用选择模式以后平均速度低于10％，也就是说渲染时间增加10倍以上。较为简单的图形渲染起来性能也低于普通渲染的30％。而这样所造成的后果就是严重的延迟。</p>
+<p>刚开始我以为是我程序优化的问题，然而即便所有的物体都使用显示列表，也存在这样的问题。我想到这可能是OpenGL实现上的问题。</p>
+<p>晚上我把Quadro FX1100专业显卡(芯片和GeForce FX5700相同)装上以后，使用一样的93.50驱动，再进行测试。发现情况有所好转，选择模式下平均速度是正常渲染模式下面的60%左右。已经感觉不出延时。</p>
+<p>然后我又在虚拟机下面进行测试，然而得到的现象却截然不同。虚拟机下面的SVGA显卡在选择模式下面的速度比正常渲染快10倍左右。</p>
+<p>很是迷茫，毕竟选择模式下面要多一些操作，速度应该要慢一些，怎么会快这么多呢？虚拟机的测试可信么？是NVIDIA的驱动的问题么？网络上也有人提到MAYA在NVIDIA显卡上面模式东西的时候运行很慢，可能问题是出现在驱动上吧。</p>
+<p>另外身边又没有ATI显卡，所以暂时不能用ATI显卡作测试。但从网络上很多人反馈得知，ATI也存在相同的问题。</p>
+<p>解决方法也有，就是自己写相关的程序，看一个人的回帖说比较简单，而他用的是BSP数据结构，对于通用的程序可能不太适用吧。</p>
+<p>今天就暂时研究这么多，也比较晚了，改日在进行相关的实验。</p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2007-02-09-oh-bad-luck/" class="post-title-link">倒霉哦</a></h2><div class="post-info">Feb 9, 2007</div><div class="post-content"><p>下午打了3个多小时战地2，哇，当指挥官把人爽死了。结果后来查分的时候发现居然没有纪录分！明明是RANK服务器嘛，咋个回事呢？莫非我进到了不是RANK的服务器！彻底晕死…………白忙了一阵~</p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2007-02-08-bender-3d-demo/" class="post-title-link">弯管机3D DEMO</a></h2><div class="post-info">Feb 8, 2007</div><div class="post-content"><p>昨天经过一些努力，把弯管机的管子加到了弯管机上面。添加了一些手工的弯管步骤，做了一个DEMO。</p>
+<p>最后在其他非开发机上面运行的时候，出现了“由于应用程序配置不正确，应用程序未能启动。重新安装应用程序可能会纠正此问题。”这个问题。上网查询，查到原来如此：<br>“……原来我在编译lib和exe文件的时候，一个选择Multi-threaded，一个选择Multi-threaded DLL， 最终造成了最终这样的结果。……”(引用：<a href="http://www.panzhishi.com/classyk/article.asp?id=4" target="_blank" rel="noopener">http://www.panzhishi.com/classyk/article.asp?id=4</a>)</p>
+<p>后来我用PE Explorer分别查看Multi-threaded和Multi-threaded DLL这两个选项生成的可执行文件，发现<br>Dependency有区别：<br>Multi-threaded DLL版本比Multi-threaded版本要多两个dll：msvcp80.dll msvcr80.dll，搜索后发现在WindowsWinSxS目录下，应该是vc crt的运行库。在其他电脑上没有这两个库，所以会出现这样的问题。</p>
+<p>经过尝试解决办法有：</p>
+<ul>
+<li>重新编译应用程序，保证所有的库和编译的程序选择Multi-threaded。</li>
+<li>安装.Net Framework 2.0</li>
+</ul>
+<p>下面是我的弯管机的3D演示。［已经失效］</p>
+<p><img src="images/flash.gif" alt="">Flash动画<br><a href="javascript:MediaShow(&#39;swf&#39;,&#39;temp39820&#39;,&#39;attachments/month_0702/SimulationNode.swf&#39;,&#39;400&#39;,&#39;300&#39;" target="_blank" rel="noopener"><img src="images/mm_snd.gif" alt="">在线播放</a>)</p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2007-02-07-yeah/" class="post-title-link">Yeah!</a></h2><div class="post-info">Feb 7, 2007</div><div class="post-content"><p>骑车来回30公里，帮女生修电脑 <img src="images/smilies/Face_03.gif" alt="">。可能是氧气比较充足，晚上写程序思路清晰，问题一个一个顺利解决！现在毕业设计已经完成了50％以上了，高兴啊。有空把管子弄上机床，开始加工：)<br>. 永远记住，仿射变换是左乘，OpenGL是右乘。保持头脑清晰，做图形学最重要的是矩阵变换要正确。</p>
+<p>从父对象到子对象的转换：</p>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">childMatrix＝parentMatrix*transformMatrix  ====&gt;</span><br><span class="line">transformMatrix=Inverse(parentMatrix)*childMatrix</span><br></pre></td></tr></table></figure>
+<ul>
+<li>树的数据结构很重要，需要更加熟练，经常在树的遍历上出点小问题。</li>
+<li>用多种手段进行调试。调试的方法的选择直接关系到找到和解决问题的速度。</li>
+<li>经常锻炼，心急的时候出去走走比较好。大脑是需要氧气的。</li>
+</ul>
+<p>最终用自己写的程序的渲染效果，各个部件能够运动的，还有碰撞检测。<br><img src="http://www.hesicong.net/blog/upload/month_0702/Simulation.jpg" alt=""></p>
+</div></article></div></div></div><div id="sidebar" class="left"><div id="about-panel"><div class="info"><div class="title">he.sicong</div><div class="url">http://www.april1985.com</div><div class="bio"></div></div><img src="/images/avatar.png" class="avatar"></div><div id="friend-links-panel"><div class="panel-title"><p>链接</p></div><a target="_blank" class="link-item"><div class="link-container"><div class="site-name">GitHub</div><div class="site-desc">http://github.com/derekhe</div></div></a><a target="_blank" class="link-item"><div class="link-container"><div class="site-name">简书</div><div class="site-desc">http://www.jianshu.com/u/b1e713e56ea6</div></div></a><a target="_blank" class="link-item"><div class="link-container"><div class="site-name">LinkedIn</div><div class="site-desc">https://www.linkedin.com/in/sicong-he-56a95437/</div></div></a></div></div></div><div class="clear"></div></main><footer class="footer-container"><div class="paginator"><a href="/page/102/" class="prev">上一页</a><a href="/page/104/" class="next">下一页</a></div><div class="copyright"><p>© 2008 - 2018 <a href="http://www.april1985.com">he.sicong</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/AngryPowman/hexo-theme-prontera" target="_blank">hexo-theme-prontera</a>.</p></div></footer><script>var _mtac = {}; (function() {     var mta = document.createElement("script"); mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.2";    mta.setAttribute("name", "MTAH5");    mta.setAttribute("sid", "500490740");    var s = document.getElementsByTagName("script")[0];    s.parentNode.insertBefore(mta, s);})();</script></body></html>

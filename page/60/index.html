@@ -1,0 +1,45 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> APRIL 1985</title><meta name="description" content="A Blog Powered By Hexo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/prontera.css"><link rel="search" type="application/opensearchdescription+xml" href="http://www.april1985.com/atom.xml" title="APRIL 1985"></head><body><header class="feature-header"><nav class="component-nav"><ul><div class="logo-container"><a href="/"><h2 class="title">APRIL 1985</h2></a></div><a href="/" target="_self" class="li component-nav-item"><p>现在</p></a><a href="/archives" target="_self" class="li component-nav-item"><p>曾经</p></a><ul class="shortcut-icons"><a href="https://github.com/derekhe" target="_blank"><img src="/images/github.svg" class="icon"></a><a href="/atom.xml" target="_blank"><img src="/images/rss.svg" class="icon"></a></ul></ul></nav></header><main class="container"><div id="body-container"><div id="post-list" class="left"><div class="home post-list"><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2008-08-28-august-28/" class="post-title-link">8月28</a></h2><div class="post-info">Aug 28, 2008</div><div class="post-content"><p>晃眼就到了8月底了，很不负责的我由于太忙了也没有时间更新日志。今天终于有一些闲暇时间来写写近况。</p>
+<p>暑假也就这样过去了，也算是出旅游了一圈，算是完成了今年年初制定的计划。和以前一样的习惯，回到家了以后就成了宅男，每天早上起来就是中午了，晚上要一两点才睡觉。一天天过去，总是觉得一天很累的样子，就像睡觉，我想可能和生活习惯有一定关系。前天回到学校的，晚上老板一个电话说是叫我第二天帮忙修个电脑。最后还是到学校好了，顺便晚上演示一下3D立体显示的效果。</p>
+<p>对于编程这方面，8月也没有过多的做什么东西。3D立体显示花了120块钱，加上以前的一个老CRT显示器就成功了。用了一天的时间就搞出来了，效果令人满意。8月更多的时间用在了试用各种软件开发包，看现在最新的一些技术，期待能够将其合成到一起做一个产品，走在别人的前面。</p>
+<p>最近也在使用Linux操作系统了，习惯了以后反而不太怎么用Windows了。由于前段时间经常内存告急，所以前天去多买了1G的内存，加起来就4G内存了。可怜的Windows XP竟然只能识别到3.25G，即便加上了PAE选项那0.75G还是没办法找回来，解决方案使用2003 Server或者VISTA很是郁闷。而Linux系统就不一样了，我用的是Ubuntu 8.04，根据<a href="http://ubuntuforums.org/showthread.php?t=855511" target="_blank" rel="noopener">这篇文章所述</a>进行内核重新编译，简单的修改一个内核选项，就可以支持4G以上内存了。之前我还试过用Ubuntu的Server版的内核，可以正确是识别到4G，但是NVIDIA的显卡驱动又不支持这个内核，只好作罢。重新编译内核用了半个多小时时间，还是比较久的，我在想编译的时候能不能像make以上加上-j的参数以后进行多线程编译呢？以后升级内核的时候再管吧。还是感觉Linux系统在这方便占据了很大的优势。</p>
+<p>近期也看过CUDA的一些东西，总的来说ＣＵＤＡ对于我的吸引力还是比较大的，写过几个小程序以后基本上知道了CUDA编程是怎么回事了。我还在想做体渲染用CUDA能不能带来速度上的进一步提高？基于Shader的图形方式的编程已经让Texture Unit不堪重负，如果从CUDA的Global Memory里面取体数据，用Stream Processor来计算又能不能释放Texture Unit的能力从而得到更好的速度呢？还是需要实验才能知道，而且算法一定还比较麻烦，要设计到如何有效的从Global Memory里面提取数据然后放到Shared Memory来进行数据缓冲～～但目前我还没有这个打算做下去，目前的显示的速度已经够用了。</p>
+<p>基于CUDA的NVIDIA的物理驱动也能够正常运行了，但流体模拟的速度还很缓慢，看来还是需要另一张显卡进行加速。NVIDA的算盘还是挺牛的，没了物理卡，多了显卡装的物理卡。我倒是在想，以后的游戏AI、物理甚至音频计算都到显卡上去了，CPU拿来干嘛么？到时候全部计算都抗到GPU上面了，CPU闲死，GPU累死，反而卡卡卡。再看啦，以后我的项目也可能要用到软物体的模拟的，期待PhysX进一步强大，多多益善～</p>
+<p>Vmware Workstation 6.5的RC版本已经发布了，说明已经离正式版很近了。其实Vmware更新一贯是很快的，这次的RC版本提供了增强3D显示的支持。据测试已经能够很好的支持Shader Model 2.0了。我虚拟机里面分配了1.5G内存给虚拟机，将其VESA驱动装好，装了3DMARK 05 1.3版本，测试成绩是2700分左右，基本上达到了6600的水平。然后兴奋的试了试战地2142，竟然能够完美的工作！！最高特效下速度能够达到真实显卡的1／3左右，当然人多的复杂场景帧数会降到15FPS一下，就没有可玩性了。在最低画质的情况下还是能够基本流畅运行，算是一个很大的进不了。</p>
+<p>当然我的说完美并不是真正的完美，而是有BUG的完美。BUG是如果没有配置好虚拟机的显示器为使用本机设置，那么到选择重生点的界面时就鼠标就是乱跑的。第二个BUG堪称完美，VESA驱动不支持FOG，也就是雾效。想雾效效果一直以来都是游戏里面最重要的元素，以来是增加了逼真度，而来是减少了显卡渲染的量，以至于2000年左右的时候，很多游戏里面的雾效都达到了夸张的效果，记忆里面那款“猎杀恐龙”你的可是距离就不超过10米～～当然，计算雾效还是需要显卡计算，以前可以固定管线进行计算，而后来则可以使用Shader进行更高级的雾效。也不清楚为什么战地2142里面雾效果没了，驱动没有做雾效还是2142使用的固定管弦的雾处理，倒是雾效在3DMARK05里面是正常的。呵呵，没有了雾效，自然战地2142的狙击手就能够看得更清出了，画面和作弊器没有区别，唯一的好处就是目前不会被反作弊系统踢出来。</p>
+<p>VMWARE的UNITY模式也好算是能够正常运行了，只是速度确实太慢了，托窗口都不能流畅拖动。原理我想可能就是在后太有一个抓屏的软件，然后传到前台窗体里面，将图贴上去就可以了。期待正式版能够进一步完善，加强速度。呵呵。</p>
+<p>好玩的东西都玩玩了。接下来的任务还是一样的繁重，只是回到了学校，又恢复了基本正常的生活规律，人也没那么恼火了。</p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2008-08-14-ubuntu-more-and-more-fun/" class="post-title-link">Ubuntu 越来越好玩～</a></h2><div class="post-info">Aug 14, 2008</div><div class="post-content"><p>这些天学习VTK顺便研究一下Ubuntu。抱着本看没用，还是要实际用起来才知道。为了解决显卡声卡的问题还是学了不少东西，然后编译什么的。为了支付淘宝的费用，最后费了多大功夫装了个IE6，最后把钱给了，还可以浏览QQ空间。最后试了试qq2008，竟然可以在wine的支持下很好的运行～～～最牛的竟然QQ2008的截图功能能够很正常的使用，太强了～～继续探索中～～</p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2008-08-08-gpu-texture-fill-rate-test/" class="post-title-link">测试GPU的材质填充率</a></h2><div class="post-info">Aug 8, 2008</div><div class="post-content"><p>体渲染最重要的一个优化就是减少GPU的采样工作。测试GPU的材质填充率能够指导我们的工作。要知道为什么GPU在800*600的环境中只能达到12FPS么？这就要看GPU每秒钟采样的次数啦。</p>
+<p>我写了一个简单的ＯＳＧ程序，用来测试采样次数：[download id=”3”]</p>
+<p>程序原理很简单，分几步：创建窗口-&gt;生成和设置纹理-&gt;载入SHADER-&gt;渲染。具体如何做要看程序里面啦，这里就不再贴出来了。</p>
+<p>直接说最后的测试的结果了。我的8800GTS(G80)官方资料说材质填充率能够达到24Billion/Sec，官方资料给的核心频率500Mhz，着色器频率1200Mhz，显存800Mhz。我将我的显卡也按照这个数据进行了降频。</p>
+<p>测试环境：窗口800<em>600，3D贴图256</em>256*256，数据是LUMINACE_ALPHA，每个像素2BYTE。每个像素的Shader采样3D贴图512次。</p>
+<p>最后得到测试FPS为11.98帧。算算：800<em>600</em>512*11.98=2,944,204,800，因为是3D纹理所以每个采样实际要有8次采样工作，所以最终的材质填充率：23,553,638,400，和24Billion/Sec很接近了。</p>
+<p>换用2D贴图可以得到相似的结果，只是FPS会快一倍。原因是三线性采样的工作量是二线性采样的两倍，很显然FPS会提升一倍。</p>
+<p>那么怎么去优化呢？下面做一些测试：</p>
+<ol>
+<li>减小3D贴图的大小，以便尽可能的装到CACHE里面。直接设置为1<em>1</em>1，结果发现性能一样。</li>
+<li>更换3D贴图的internal format为RGBA，发现性能一样。</li>
+<li>超频：超核心，性能提升百分比和超频百分比几乎一样。超Shader，几乎没变化。超显存，几乎没变化。</li>
+<li>降频：降核心，性能降低百分比和降频百分比几乎一样。降Shader，几乎没办法。降显存，一直降到400Mhz也没有变化。</li>
+<li>降低每像素采样率：降低为256后，性能提升一倍，和预期一样。<br>最终的结果很明显。3D贴图的采样已经成了整个系统的瓶颈，已经让显卡的贴图单元达到了极限。Shader处理器由于计算量很小，所以还很空闲。由于采样过滤的繁忙，贴图单元也不需要很大的显存带宽，所以显存的影响几乎没有。</li>
+</ol>
+<p>优化的措施：只能尽可能的减少采样次数，或者找更快的卡。目前看来只有G92的9800GTX或者8800GTS的采样率能够达到43.2Billion/Sec以上，GTX280官方资料也只能达到48.2Billion/Sec，GTX260 36.9Billion/Sec。9800GX2能够达到76.8Billion/Sec，就是不知道实际SLI的性能能不能满足需要了。看来如何选择适合体渲染的卡已经有一个理论和实际的指导了。</p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2008-08-01-wake-up/" class="post-title-link">一觉醒来</a></h2><div class="post-info">Aug 1, 2008</div><div class="post-content"><p>这边的早晨总是亮得早，早早的就醒了，醒来后又在思考应该怎么做，又在回忆。中午就得离开苏州了，先计划到上海城隍庙逛逛玩，晚上还要等同学下班了才能有住的地方。</p>
+<p>起来后心情也不舒畅，想带的带不走，想留的留不下。每当走到这种无法回头的地方时，心里就万般冰凉，握不住的手从掌心滑过，数不清的雨滴打在脸上，想流泪，又想坚强，公交车玻璃反射的面容，碎了。</p>
+<p>总得离开的，给我一个理由；总不想离开，因为回忆。</p>
+<p>下午，一个人的旅游，能自己快乐起来么？但愿吧，但愿！</p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2008-08-01-reluctant/" class="post-title-link">舍不得</a></h2><div class="post-info">Aug 1, 2008</div><div class="post-content"><p>偶然的相遇，同样漫无目的在城市里的一个角落，一个桌子，两张凳子，拙政园的介绍，生命之间多了一个交点。</p>
+<p>三天的游玩，仿佛置身于幻境，博物馆、狮子园，周庄，水上世界，一切都在没有安排的安排之中，两个相机，彼此记录精彩的瞬间。</p>
+<p>狮子园石狮子，钻假山；周庄双桥，魔屋；水上世界下水，冲浪。</p>
+<p>时间不等人，天色渐暗，为什么没有一种魔法能够让这快乐延续，为什么很像，为什么感觉似曾相识，为什么无法挽留，为什么那么的喜欢，为什么那么舍不得？</p>
+<p>离开时候的背影，内心突然的伤痛，从哪儿来？</p>
+<p>“傻瓜？总是要分开的……偶尔能想起我就好啦”</p>
+<p>傻，为什么那么痴情，为什么心底的痛楚会一次一次的涌上心头。</p>
+<p>一路上听着张韶涵的《不想懂得》。</p>
+<p>手机里唯一的几首歌，听了几遍，这时候，最适合听这样的歌曲。</p>
+<p>天黑了，雨滴打在玻璃上，窗外的景色依旧，而明天可能就要离开这个城市了，何去何从？</p>
+<p>回到宾馆，依然心痛，依然回忆，依然放不下，依然恋恋不忘。</p>
+<p>还有再次的相遇么？还能够相见么？</p>
+<p>舍不得</p>
+</div></article></div></div></div><div id="sidebar" class="left"><div id="about-panel"><div class="info"><div class="title">he.sicong</div><div class="url">http://www.april1985.com</div><div class="bio"></div></div><img src="/images/avatar.png" class="avatar"></div><div id="friend-links-panel"><div class="panel-title"><p>链接</p></div><a target="_blank" class="link-item"><div class="link-container"><div class="site-name">GitHub</div><div class="site-desc">http://github.com/derekhe</div></div></a><a target="_blank" class="link-item"><div class="link-container"><div class="site-name">简书</div><div class="site-desc">http://www.jianshu.com/u/b1e713e56ea6</div></div></a><a target="_blank" class="link-item"><div class="link-container"><div class="site-name">LinkedIn</div><div class="site-desc">https://www.linkedin.com/in/sicong-he-56a95437/</div></div></a></div></div></div><div class="clear"></div></main><footer class="footer-container"><div class="paginator"><a href="/page/59/" class="prev">上一页</a><a href="/page/61/" class="next">下一页</a></div><div class="copyright"><p>© 2008 - 2018 <a href="http://www.april1985.com">he.sicong</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/AngryPowman/hexo-theme-prontera" target="_blank">hexo-theme-prontera</a>.</p></div></footer><script>var _mtac = {}; (function() {     var mta = document.createElement("script"); mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.2";    mta.setAttribute("name", "MTAH5");    mta.setAttribute("sid", "500490740");    var s = document.getElementsByTagName("script")[0];    s.parentNode.insertBefore(mta, s);})();</script></body></html>

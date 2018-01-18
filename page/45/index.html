@@ -1,0 +1,62 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> APRIL 1985</title><meta name="description" content="A Blog Powered By Hexo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/prontera.css"><link rel="search" type="application/opensearchdescription+xml" href="http://www.april1985.com/atom.xml" title="APRIL 1985"></head><body><header class="feature-header"><nav class="component-nav"><ul><div class="logo-container"><a href="/"><h2 class="title">APRIL 1985</h2></a></div><a href="/" target="_self" class="li component-nav-item"><p>现在</p></a><a href="/archives" target="_self" class="li component-nav-item"><p>曾经</p></a><ul class="shortcut-icons"><a href="https://github.com/derekhe" target="_blank"><img src="/images/github.svg" class="icon"></a><a href="/atom.xml" target="_blank"><img src="/images/rss.svg" class="icon"></a></ul></ul></nav></header><main class="container"><div id="body-container"><div id="post-list" class="left"><div class="home post-list"><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2009-03-18-vampires/" class="post-title-link">Vampires</a></h2><div class="post-info">Mar 18, 2009</div><div class="post-content"><p>Today’s topic at my Complementary Class was VAMPIRES. What is vampire? Do you remeber the bat flying from the hidden place and bite people’s neck in movie? That’s kind of vampire.</p>
+<p>To introduce what is vampire and how to kill it, the teacher showed us a short movie called Darcula. You may hear that before. Although I doesn’t belive there is vampire, but teacher also taught us how to kill them:</p>
+<ol>
+<li>Burn the dead body.</li>
+<li>Drive a wooden stroke through its heart.</li>
+<li>(Man only) Chop off its head with a gravediggers shovel.</li>
+</ol>
+<p>And the end of the course, teacher played a clip of National Geographic. This clip could be found here: <a href="http://www.poetv.com/video.php?vid=28007" target="_blank" rel="noopener">http://www.poetv.com/video.php?vid=28007</a></p>
+<p>Is that real? I consider not. I don’t belive vampires and ghosts.</p>
+<p>After my class I attended Joe’s study advice. I was new here. We talked about English study, he suggested us to practise at www.listeningexpress.com</p>
+<p>At the end, write a tongue twister:</p>
+<p>She sells seashells on the seashore, the shells she sells are seasheels. So if she sells shells on the seashore, I’m sure she sells seashore shells.</p>
+<p>That’s all for today, have a nice sleep.</p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2009-03-18-net-2-0-data-binding-is-purely-a-waste/" class="post-title-link">.NET 2.0数据绑定纯粹是垃圾</a></h2><div class="post-info">Mar 18, 2009</div><div class="post-content"><p>我在开发WinForm应用程序的时候很少使用数据绑定，以前也没有怎么用过。今天在做一个参数设置面板的时候用到了他。然而很令我失望，它不仅没有解决问题，而且还带来了严重的问题，让我找了好半天，最后确认是BUG。当然也不是我一个人遇到了，看看<a href="http://weblogs.asp.net/psteele/archive/2006/10/10/Data-Binding-fails-me-again_2E002E002E00_.aspx" target="_blank" rel="noopener">这篇文章</a>，他们也遇到了相同问题。</p>
+<p>问题描述起来是这样的：</p>
+<p>我有一个这么样一个Class：</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">BindTest</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> number = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> anotherNumber = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> Number</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">get</span> &#123; <span class="keyword">return</span> number; &#125;</span><br><span class="line"><span class="keyword">set</span> &#123; number = <span class="keyword">value</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> AnotherNumber</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">get</span> &#123; <span class="keyword">return</span> anotherNumber; &#125;</span><br><span class="line"><span class="keyword">set</span> &#123; anotherNumber = <span class="keyword">value</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>窗体上有两个控件，一个是textBox1，绑定Number属性，另一个是textBox2，绑定AnotherNumber属性。由于我需要“确认”和“取消”按钮，所以我在高级绑定里面将两个控件的绑定行为改为Never，也就是不更新它的值。</p>
+<p>按照MSDN里面阐述的，使用Binding的WriteValue()方法就可以将数据更新。在我的程序里面可以这样写：textBox1.DataBinding[0].WriteValue();</p>
+<p>textBox2类似的做法。</p>
+<p>后来一运行，问题就出来了，仅仅能够将textBox1的值更新，而textBox2的值还原了！！！</p>
+<p>一番搜索以后又回到了刚开始的那篇讨论中，有人这么说道：</p>
+<p>As to the problem above this comment, it is a common malfunction of databinding. Simply, if you attempt to control the writing/reading behavior of Binding class, it will –REVERT– changes of all other non-bound fields/properties. Therefore, only first bound control gets updated due to the fact it is the only one which has access to CHANGED data, after its done with the update, it reverts the changes back thus canceling them, so other bindings are useless.</p>
+<p>大意是“这是数据绑定的一个故障。简而言之，试图操作绑定类的写入和读取行为，它回将所有的未绑定的字段和属性还原。因此，仅仅只有第一个被绑定的对象能够得到修改了的数据，在它完成刷新操作之后，它将所有的修改还原因此就取消了其他控件的修改，因此绑定是无用的”</p>
+<p>理解了以后，就明白了，我得重新手动写了，哎，数据绑定真是讨厌啊。</p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2009-03-17-little-hard-to-understand/" class="post-title-link">Little hard to understand</a></h2><div class="post-info">Mar 17, 2009</div><div class="post-content"><p>He, a British man, tought me the second private class. His voice was fast and at the first I even could not catch what he said. I have to tell him to repeat: I’m sorry and could you please repeating that?</p>
+<p>But not all students weren’t know what he said. A girl sat beside me, who brought a English novel, told me that is easy to know what he said. I did not lose my mind but listened carefully and tried to understand.</p>
+<p>After a few moment, I was familar with his voice although I don’t know some words. I tried my best. Finally I almost knew every thing he said. That’s much better!</p>
+<p>Complementary class was followed by private class, my teacher was an handsome American man. Todays’ topic had been English in hard times, but we enjoyed talking about other things, so finally teacher changed his mind. To me, it’s no matter what topic, I was listening and practising.</p>
+<p>Here take some notes about what I learned today:</p>
+<ul>
+<li>Oh, my god. Thanks heavenas.</li>
+<li>handed it in</li>
+<li>carry away; who’s taken it?</li>
+<li>tangible, intangible</li>
+<li>bolt of lightning</li>
+<li>shelter – some place to hide from rain</li>
+<li>soaking wet – really wet. Today is so hot that we are soaking wet.</li>
+<li>witness</li>
+<li>creak</li>
+<li>defiance, defy</li>
+<li>handout</li>
+<li>spouse – wife or husband</li>
+<li>accuse – eg. Maybe you have been accused of some crime?</li>
+<li>paralyze – make powerless and unable to function</li>
+<li>bossy</li>
+<li>lousy – very bad</li>
+</ul>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2009-03-16-first-class-at-meten/" class="post-title-link">First class at Meten</a></h2><div class="post-info">Mar 16, 2009</div><div class="post-content"><p>It’s sunny today and it is my first class at Meten. I wake up at 9 o’clock and had a launch at home with my family. After dinner, I went to school to fetch my student books.</p>
+<p>I meat my SA at 3:00 PM, and she introduced the whole class and showed me how to book the courses. I took notes carefully but at the end I was still not very clear. That was not a big problem, just go and have a try.</p>
+<p>ELLIS training software have four classes I needed to finish in one and half an hour, just because I must finished this to enter private class today. Time was so limited! I tried to follow the all instructions and comments, but it was hard to do so. So I have to skip some contents and focus on important material.</p>
+<p>When I completed the lessones, it was twenty past six. I had to have a supper right now, I was too hungry that time.</p>
+<p>I ate quickly and returned to Meteni at twenty to seven. Twenty minues were used to do oral test. SA gave me questions about the course I took, but I was sorry that I forget many detail about the dialog. I needed to review them after class.</p>
+<p>Seven o’clock, which it’s my private class time. Two girls and I were setting in a small classroom and my foreign teacher was Callum. We talked about phone courtesy, in another way, how to do polite phone call.</p>
+<p>The lesson was focus on what to do is polite when making a call. I took note about mobile phone and landline, discussed about the time to make phone, listened to teacher’s article on Living in Australia which is a short story about friendship.</p>
+<p>I’ve learned the words: CV, curriculum, courtesy, curfew, landline, surf, sarcasm, sarcasitic, ironic, irony.</p>
+<p>Difference between: over the 3 years, over 3 years.</p>
+<p>Happy new year and merry christmas. We could also say Happy Christmas.</p>
+<p>That’s it, I learned a lot, but require further review on them. Have a nice sleep!</p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2009-03-15-weight-of-the/" class="post-title-link">增重了</a></h2><div class="post-info">Mar 15, 2009</div><div class="post-content"><p>高中毕业110；本科，最高纪录120，基本110；研一，去了趟浙江天天红烧肉，120；研二，春节这段时间吃多了，过剩了，对肉没啥兴趣了，现在130。</p>
+<p>运动少了，肚子上的肉也多了起来，可能该减肥了……</p>
+</div></article></div></div></div><div id="sidebar" class="left"><div id="about-panel"><div class="info"><div class="title">he.sicong</div><div class="url">http://www.april1985.com</div><div class="bio"></div></div><img src="/images/avatar.png" class="avatar"></div><div id="friend-links-panel"><div class="panel-title"><p>链接</p></div><a target="_blank" class="link-item"><div class="link-container"><div class="site-name">GitHub</div><div class="site-desc">http://github.com/derekhe</div></div></a><a target="_blank" class="link-item"><div class="link-container"><div class="site-name">简书</div><div class="site-desc">http://www.jianshu.com/u/b1e713e56ea6</div></div></a><a target="_blank" class="link-item"><div class="link-container"><div class="site-name">LinkedIn</div><div class="site-desc">https://www.linkedin.com/in/sicong-he-56a95437/</div></div></a></div></div></div><div class="clear"></div></main><footer class="footer-container"><div class="paginator"><a href="/page/44/" class="prev">上一页</a><a href="/page/46/" class="next">下一页</a></div><div class="copyright"><p>© 2008 - 2018 <a href="http://www.april1985.com">he.sicong</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/AngryPowman/hexo-theme-prontera" target="_blank">hexo-theme-prontera</a>.</p></div></footer><script>var _mtac = {}; (function() {     var mta = document.createElement("script"); mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.2";    mta.setAttribute("name", "MTAH5");    mta.setAttribute("sid", "500490740");    var s = document.getElementsByTagName("script")[0];    s.parentNode.insertBefore(mta, s);})();</script></body></html>
