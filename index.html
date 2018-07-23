@@ -1,4 +1,126 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> APRIL 1985</title><meta name="description" content="A Blog Powered By Hexo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/prontera.css"><link rel="search" type="application/opensearchdescription+xml" href="http://www.april1985.com/atom.xml" title="APRIL 1985"></head><body><header class="feature-header"><nav class="component-nav"><ul><div class="logo-container"><a href="/"><h2 class="title">APRIL 1985</h2></a></div><a href="/" target="_self" class="li component-nav-item"><p class="selected">现在</p></a><a href="/archives" target="_self" class="li component-nav-item"><p>曾经</p></a><ul class="shortcut-icons"><a href="https://github.com/derekhe" target="_blank"><img src="/images/github.svg" class="icon"></a><a href="/atom.xml" target="_blank"><img src="/images/rss.svg" class="icon"></a></ul></ul></nav></header><main class="container"><div id="body-container"><div id="post-list" class="left"><div class="home post-list"><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2017-12-15-why-i-create-aiflygo/" class="post-title-link">我为什么要开发这款小程序？</a></h2><div class="post-info">Dec 15, 2017</div><div class="post-content"><p>2012年由于家庭的原因，我经常乘飞机往返于成都和广州。每次买机票前我都要观察一段机票的价格，然后再进行购买，但具体什么时候买很多时候都是靠拍脑袋。在买多几次机票后，我发现机票的价格变化还是有一定的规律可行。后来有一本叫做《大数据时代》的书提到了国外的一个Farecast产品，能够预测7天内的票价变化，给出买还是不买的建议。但很遗憾的是多年来国内一直没有相关的产品，这便触发了我做一款类似产品的想法。</p>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> APRIL 1985</title><meta name="description" content="A Blog Powered By Hexo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/prontera.css"><link rel="search" type="application/opensearchdescription+xml" href="http://www.april1985.com/atom.xml" title="APRIL 1985"></head><body><header class="feature-header"><nav class="component-nav"><ul><div class="logo-container"><a href="/"><h2 class="title">APRIL 1985</h2></a></div><a href="/" target="_self" class="li component-nav-item"><p class="selected">现在</p></a><a href="/archives" target="_self" class="li component-nav-item"><p>曾经</p></a><ul class="shortcut-icons"><a href="https://github.com/derekhe" target="_blank"><img src="/images/github.svg" class="icon"></a><a href="/atom.xml" target="_blank"><img src="/images/rss.svg" class="icon"></a></ul></ul></nav></header><main class="container"><div id="body-container"><div id="post-list" class="left"><div class="home post-list"><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2018-06-22-look-into-your-business/" class="post-title-link">小心！我正在偷窥你的运营</a></h2><div class="post-info">Jun 22, 2018</div><div class="post-content"><p>首先，问一个很简单的问题考考你——在上海，摩拜单车出行的高峰时段是什么？这个问题相对比较容易回答，根据普通人上下班的时段应该是早上七八点左右，下午六七点左右。恭喜，你答对了。</p>
+<p>现在问一个稍微更难一点的问题：在上海，摩拜单车使用次数的分布是什么情况？对于我而言，基本上每天就从地铁站骑到公司，然后下班从地铁站骑回公司，就算做是两次吧，通常这部分人应该不少。而这道题问的是分布，那么得知道0次骑行的车的数量，骑行一次、两次、n次的车的数量。我们可以做个小范围的采样，在单车密集的区域架设几个摄像机，然后分析一下哪些车没有被骑走即可。但是，骑行两次、三次以及更多次数的车的数量如何得知呢？我们很难知道，或许我们可以通过发放调查问卷来得知，但如果样本太少会得到打的偏差。同样的道理，回答“摩拜单车的骑行距离的分布式什么情况”，也相对较难。</p>
+<p>要知道共享单车的运营情况，我们通常只能通过官方或者研究机构的各种报告来获取到。然而这些报告可能缺少一些时效性，对某些研究来讲并不能产生任何作用：例如在城市规划时研究OD线、叠加图层分析更多因素的结合时，就显得无能为力。最后的渠道也是最正规的渠道是通过和共享单车企业合作，然而由于涉及到商业机密，通常很难获得。</p>
+<blockquote>
+<p>OD线（Origin-Destination Line），是指连接“起点”（origin）和“终点”（destination）的线，通常用于在地图上直观表示某两个地理位置之间的联系，如车辆的行驶轨迹、飞机的航线和人口的迁徙等。</p>
+</blockquote>
+<p>回到单车的APP上来，既然能够帮我们显示出车辆的信息，那么我们能不能把一个区域的范围的车的信息都抓取下来，然后进行分析呢？这个思路非常的有趣，在我之前写的<a href="https://www.jianshu.com/p/07225f301fc4" target="_blank" rel="noopener">摩拜单车爬虫解析——找到API
+</a>中已经有所涉及。在这里我们不谈技术细节，通过对爬取的上海市2018年5月29日星期二（晴天）的数据进行分析我们迅速地得出上面问题的答案：</p>
+<ul>
+<li>单车的分布图和部分热力图。可以明显的看到上海城市的发展规模以及人口密集区域的分布。</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-94b42d986f876bb9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="单车分布图"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-b6e3813ae240f26c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="单车热力图"></p>
+<ul>
+<li><p>单车使用次数类似一个正则分布，2次的次数最多，符合人们的直觉。<br><img src="https://upload-images.jianshu.io/upload_images/4372317-b23368fcf3e5a0f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="使用次数直方图"></p>
+</li>
+<li><p>骑行的直线距离分布在2千米之类，以1千米范围为最多，这通常也是单车解决“最后一公里”问题的证据。<br><img src="https://upload-images.jianshu.io/upload_images/4372317-c7aca8e9578a7763.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="骑行距离分布"></p>
+</li>
+<li><p>出行的时段的分布在早上7点左右达到高峰，然后晚上7点左右达到高峰，这和人们的出行习惯是密切相符的。有趣的是夜间22点以后到第二天凌晨5点左右，也有单车在移动，但这时候骑行的人相对很少，所以这些单车的移动很有可能是摩拜单车的运营人员在批量的挪单车。如果将这些数据加以分析应该可以知道这些车从哪里挪到哪里，进而更深层的分析单车企业的运营策略。</p>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-0e7ba730ae95761c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="骑行时段分布"></p>
+<p>同样的道理，让我们来看看共享汽车的运营情况。我们抓取了去年GoFun从10月到1月的数据，得出了以下一些运营状况的分析：</p>
+<ul>
+<li>GoFun绝大多数车型都是奇瑞的车。两座和四座的车是主流，车身小巧一方面比较节能，另一方面比较容易操作。这主要是因为奇瑞投资了GoFun。</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-306cf2bd22323813.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="车辆信息"></p>
+<ul>
+<li>截止2018年1月26日，GoFun目前在全国总共有10327辆车。下图是车辆增长的情况。可见运营一直在持续，并且缓慢增长。</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-a4106cb1e08baee0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="增长"></p>
+<ul>
+<li>三个月内车的使用次数的分布。横坐标是使用的次数，纵坐标是次数对应的车的数量。近似一个正态分布，大约70%的车都在24到72的区间。平均起来每天0.3次到1次左右，这对于共享汽车企业来讲并不是一个好事，太低的使用率可能会导致入不敷出。</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/4372317-1b9fddc4f1699006?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<ul>
+<li>使用时长的分布。横坐标代表停车的时长（小时）最长统计到70小时，纵坐标代表有多少车次。对比停车时长的分布，使用时长的分布比较明显的集中在0到6小时之间，这也是共享出行的特点。由于GoFun有包天的租车服务，所以长期的出行的费用也是可以接受，长达70小时以上的使用时间也有1700多车次。</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/4372317-86fd7bfd12e67d08?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>由于篇幅所限，更多的分析结果可以参见<a href="http://www.april1985.com/sharecar_report/">大数据看共享汽车</a>一文。</p>
+<h1 id="保护我们的数据"><a href="#保护我们的数据" class="headerlink" title="保护我们的数据"></a>保护我们的数据</h1><p>以共享单车为例，当我们手工的小范围的采集数据时，并不能产生很大的作用，当我们收集到的数据越来越多时，甚至通过自动化爬虫这种手段获取到足够多的数据以后，大数据就开始展现量变到质变的过程。共享单车、共享汽车的案例中，虽然我们没有得到订单的数据、没有用户信息，但通过对海量数据分析、结合多种维度，我们依然可以窥探企业的运营。我在<a href="https://www.jianshu.com/p/35d6ff3f0b7b" target="_blank" rel="noopener">2017自由职业大数据分析</a>一文中爬取到Freelancer网站的所有公开信息并进行了自由职业的分析；在<a href="https://www.jianshu.com/p/3b22fb101189" target="_blank" rel="noopener">机票大数据分析，揭示购票的秘密
+</a>中，通过一年多的机票价格数据采集得到多个机票购票的建议。所有的数据都来自于公开的API，而主要的获取方式则是爬虫。</p>
+<blockquote>
+<p>网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁、自动索引、模拟程序或者蠕虫。</p>
+</blockquote>
+<p>爬虫获取信息的方式可以通过爬取页面，也可以通过分析APP的请求来得到API。所以一切返回数据的地方都是可以通过一些手段获取到，而主要的区别在于获取数据的难度的大小，这也通常是爬虫和反爬虫的较量之一。当爬虫的成本高到一定水平以后，反爬虫就胜利了。</p>
+<p>通常来讲，反爬虫的手段无外乎对IP限制、验证码、要求登录等，可以参考<a href="https://segmentfault.com/a/1190000005840672" target="_blank" rel="noopener">关于反爬虫，看这一篇就够了</a>一文。固然这些方式都可以较好的保护应用，但会给适用方带来不便，除此之前我们可以考虑一些建议来减小数据被大规模爬取的可能，增加爬虫的成本：</p>
+<h2 id="从业务上进行考虑，不需要客户感知的数据不提供或者少提供"><a href="#从业务上进行考虑，不需要客户感知的数据不提供或者少提供" class="headerlink" title="从业务上进行考虑，不需要客户感知的数据不提供或者少提供"></a>从业务上进行考虑，不需要客户感知的数据不提供或者少提供</h2><p>以单车应用来看，ofo单车并没有提供摩拜单车的预定的功能，所以在界面上也没有必要展示出单车的编号信息。在去年9月份左右，ofo单车对API进行了调整，将所有的单车编号进行随机化处理，导致ofo单车的数据目前无法爬取。哈罗单车在未登陆的情况下只提供几台单车的数据，登陆后能够展示附近所有的单车。由于需要登录，爬虫的成本会变得很高也非常的脆弱。<br>反观某大型旅游OTA网站的API，调用后返回了相当数量的额外信息，甚至在价格方面包含了两种价格，而其中一种价格并不会在界面上进行显示，这种信息非常值得怀疑是不是内部的价格。</p>
+<h2 id="盘点所有的API的使用方，谨慎一切以JavsScript开发的客户端"><a href="#盘点所有的API的使用方，谨慎一切以JavsScript开发的客户端" class="headerlink" title="盘点所有的API的使用方，谨慎一切以JavsScript开发的客户端"></a>盘点所有的API的使用方，谨慎一切以JavsScript开发的客户端</h2><p>目前手机APP层面的保护措施已经相对较多，而且大多数应用受到加密外壳的保护很难破解，想得到URL里面的签名信息的生成方式变得非常困难。然而仔细盘点一款产品的各种渠道，会发现有些产品可能会提供HTML5、公众号、小程序等入口，而这些以JavsScript生态圈的应用并未收到很好的保护。<br>以某款快递软件为例，该查询软件中提供了sign信息，基本无法知道如何生成，但在小程序中调用了类似的API并带上了sign信息，通过一个Root的安卓手机可以将小程序解包，分析JavaScript很容易的发现了sign的生成方式。另外某单车软件登陆的签名信息eption也是经过了加密处理，在小程序中也能够发现其生成的方式，马奇诺防线就这样轻松的被越过了。<br>当然小程序端的防止爬取的方式比较简单，小程序的后端可以通过微信的接口生成动态的token的方式进行用户验证，防止数据泄露。</p>
+<h2 id="做好后台的监控"><a href="#做好后台的监控" class="headerlink" title="做好后台的监控"></a>做好后台的监控</h2><p>道高一尺魔高一丈，后台API调用的日志和监控手段要重视。对于异常数量的API调用要及时分析出原因减少被利用的可能。</p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2018-03-20-evard/" class="post-title-link">大数据看共享汽车——EVCard篇</a></h2><div class="post-info">Mar 19, 2018</div><div class="post-content"><p>去年2月份我做过共享单车的数据分析，也分析出一些有意思的点。从2017年10月1日开始，历时3个多月，我收集了EVCard和GoFun共享汽车的公开数据。下面整理成一个动态的报告，一起看一下共享汽车的现状。</p>
+<blockquote>
+<p>注：该数据分析及报告仅代表个人意见，仅供参考，数据来自于API请求的结果，只包含公开的信息，不涉及用户信息。引用、使用该报告引起的任何后果（包括但不限于版权、侵犯法律法规）等，由使用方承担。</p>
+</blockquote>
+<h1 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h1><p>EVCARD品牌是上海国际汽车城新能源汽车运营服务有限公司开展的电动汽车分时租赁项目。 EVCARD电动汽车分时租赁是借助物联网技术实现的一种新型汽车分时租赁服务模式，实现了用户任意时间自行预订，任意网点自助取还的用车需求。 上海国际汽车城 新能源汽车运营服务有限公司是上海市第一家面向新能源汽车开展租赁和共享的专业公司，主要开展面向集团用户（B2B、B2B2C模式）以及私人用户（B2C）的新能源汽车长短租服务</p>
+<p>我们先来看一些关于车的基本的信息。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-61ba4c1b382ce875.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>从上面图可以知道，EVCard的车品牌比较多，其中还是北汽、奇瑞、江淮的低端车型比较多，中端的较大的车型荣威E50也占据了11.03%的分量。高端的宝马i3也有，但极少。虽然<a href="https://www.evcard.com/models/detail/id/15.html" target="_blank" rel="noopener">EVCard官网</a>上面虽然列出了车型，但可能更新较慢和数据中的车型不一致。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4372317-d749fbc13fc836c1..png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4372317-e90167c62d31178d..png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="业务概况"><a href="#业务概况" class="headerlink" title="业务概况"></a>业务概况</h2><p>根据采集的数据，截止2017年11月底，EVCard目前在全国总共有12152辆车。下图是车辆增长的情况。整体趋势来讲呈平稳上升趋势，说明目前发展状况稳定。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-c3b88c69a0d18d33.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>我们再来看看车辆的数量分布。可以看出来在上海以及附近的省份有很多的车辆，和GoFun正好是相反。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-c4244f819dc6d201.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>由于EVCard必须在指定地点借还，停车场的数量多少就直接影响到用户体验。随着车的增长，停车场的数量也应该有相应的增长才对，从图里面也看出停车场的增长较为平稳。截止2017年11月底，全国总共有5540个停车场，远超GoFun的2887个停车场。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-40b38368b5f7c827.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>在停车场各省的分布情况中，几乎是和车辆的分布接近。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-27f44f37647eb643.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>我们再来看一下多少汽车共用一个停车场的情况。从图上看出，平均来看大致一个停车场目前有2辆车的规模。如果一个停车场容纳的车越多，那么用户能够拿到车的几率越大，从这方面看也是一个好事。如果停车场的数量较少，网点不密集，就会影响用户的到达性。从这张图可以看到出有几个省的比例到了4到5，分析看来是由于这些省份的停车场数量偏少。你可以在”停车场分布”图中，具体看看停车点的分布。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-b5b7008e8b221d9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h1 id="停车场分布"><a href="#停车场分布" class="headerlink" title="停车场分布"></a>停车场分布</h1><p>下图是停车场的分布图，图上标记了全国的停车场的位置，可以自由浏览。上海作为EVCard的大本营，有非常丰富的网点，可想上海的用户出行是非常的方便的。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-e3fbe1ca2f617230.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h1 id="车辆流转情况"><a href="#车辆流转情况" class="headerlink" title="车辆流转情况"></a>车辆流转情况</h1><p>下图是三个月内车的使用次数的分布。横坐标是使用的次数，纵坐标是次数对应的车的数量。0到70次占据了相当多的数量，然而130到170次之间也有一个小的起伏。平均下来有每天0.5到2次的使用频率还是不错了。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-32c0ba387eec86a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>但使用次数只是运营情况的一种体现。如果每次使用时间比较短，停车时间比较长，对EVCard也不是一个好事。下图展示了停车时长的分布。横坐标代表停车的时长（小时）最长统计到70小时，纵坐标代表有多少车次。从图上看由于使用的频率比较高，停留时间集中在较短的一端比较多。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-00be287cbf860075.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>下图展示了使用时长的分布。横坐标代表停车的时长（小时）最长统计到70小时，纵坐标代表有多少车次。对比停车时长的分布，使用时长的分布比较明显的集中在0到6小时之间，这也是共享出行的特点。由于EVCard有包天的租车服务，所以长期的出行的费用也是可以接受，长达70小时以上的使用时间也有1300多车次。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-72c74bc418280742.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h1 id="车的轨迹"><a href="#车的轨迹" class="headerlink" title="车的轨迹"></a>车的轨迹</h1><p>下面这个动画展示了一辆车的直线运动的轨迹。由于我们仅能得到出发、到达地无法获得中间的轨迹，所以只能这样按照直线标注。图上展示最近几个点，以及位置迁移情况。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-164eef2161ef9961.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h1 id="电池电量"><a href="#电池电量" class="headerlink" title="电池电量"></a>电池电量</h1><p>下面这张图展示某一辆车的电池变化情况，其中深色区域代表该车在停车场内没有被使用。<br><img src="https://upload-images.jianshu.io/upload_images/4372317-b0b4fec4a30c041e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>根据以上的分析，EVCard目前比较集中上海附近的省份，尤其是在上海集中优势的力量建立非常密集的网点，对于用户的使用无疑是一个好事。长期来看，停车场和车在稳步的发展，从小型车到大型车的车型的多样化，也为用户的不同出行带来了方便。。</p>
+<h1 id="附件"><a href="#附件" class="headerlink" title="附件"></a>附件</h1><p>互动网站：<a href="http://www.april1985.com/sharecar_report/evcard/report/index.html">http://www.april1985.com/sharecar_report/evcard/report/index.html</a><br>源代码：<a href="http://www.april1985.com/sharecar_report/">http://www.april1985.com/sharecar_report/</a></p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2018-03-19-gofun/" class="post-title-link">大数据看共享汽车——GoFun篇</a></h2><div class="post-info">Mar 19, 2018</div><div class="post-content"><p>去年2月份我做过共享单车的数据分析，也分析出一些有意思的点。从2017年10月1日开始，历时3个多月，我收集了GoFun和EVCard共享汽车的公开数据。下面整理成一个互动的报告（文后有链接及代码），一起看一下共享汽车的现状。</p>
+<blockquote>
+<p>声明：该数据分析及报告仅代表个人意见，仅供参考，数据来自于API请求的结果，只包含公开的信息，不涉及用户信息。<br>引用、使用该报告引起的任何后果（包括但不限于版权、侵犯法律法规）等，由使用方承担。<br>未经许可禁止转载</p>
+</blockquote>
+<h1 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h1><p>GoFun出行是首汽集团针对移动出行推出的一款新能源共享汽车产品，秉承首汽集团作为全国最大出行服务运营企业的多年经验和优势资源，响应政府号召，把握“新能源+车联网”的全趋势，致力于整合用户碎片化的用车需求，提供便捷、绿色、快速、经济的出行服务。 GoFun出行是共享行业新兴的一种租车模式，车辆无人值守，用车全程App操作，以“分钟+公里”计算并提供汽车的即取即用、分时租赁服务，消费者可按个人用车需求预订车辆。GoFun出行已相继完成全国20余个城市的布局，其中不乏北京、上海、武汉、成都、南京等一、二线城市，更有西安、青岛、昆明、桂林、三亚等重要旅游地。</p>
+<p>我们先来看一些关于车的基本的信息。<br><img src="https://upload-images.jianshu.io/upload_images/4372317-58a826288b180b61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>从上面几幅图可以知道，GoFun绝大多数车型都是奇瑞的车。两座和四座的车是主流，车身小巧一方面比较节能，另一方面比较容易操作。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-61caab47206ce91b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="https://upload-images.jianshu.io/upload_images/4372317-13bbc2d54991f224.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>为什么是奇瑞的车占据绝大部分份额呢？从网络搜索到两条新闻可以知道奇瑞是GoFun的合作伙伴，这也不足为奇了：</p>
+<ul>
+<li><a href="http://www.chinanews.com/auto/2017/03-27/8184335.shtml" target="_blank" rel="noopener">Gofun出行采购万辆奇瑞“小蚂蚁” 助力全国战略</a></li>
+<li><a href="http://ifenxi.com/archives/2355" target="_blank" rel="noopener">大众和奇瑞超2亿入股GoFun</a></li>
+</ul>
+<p>#业务概况</p>
+<p>根据采集的数据，截止2018年1月26日，GoFun目前在全国总共有10327辆车。下图是车辆增长的情况。注意，车辆数量有时候会变少，这是因为数据采集时只能采集到没在使用的汽车，所以会少一些。整体趋势来讲呈平稳上升趋势，说明目前发展状况稳定。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-e24f4823388f2be8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>我们再来看看车辆的数量分布。可以看出来在四川、广东、陕西、福建等省有很多的车辆，属于比较正常的情况。比较奇怪的是上海的车辆数量很少，我猜测在上海早已有竞争对手占据了市场，还不如避而求其次。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-429bbaabc3e2706e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>由于GoFun必须在指定地点借还，停车场的数量多少就直接影响到用户体验。随着车的增长，停车场的数量也应该有相应的增长才对，从图里面也看出停车场的增长较为平稳。截止2018年1月26日，全国总共有2887个停车场。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-85f4b83138e1a5a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>在停车场各省的分布情况中，几乎是和车辆的分布接近。<br><img src="https://upload-images.jianshu.io/upload_images/4372317-150aba79679f7938.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>我们再来看一下多少汽车共用一个停车场的情况。从图上看出，平均来看大致一个停车场目前有3辆车的规模。如果一个停车场容纳的车越多，那么用户能够拿到车的几率越大，从这方面看也是一个好事。如果停车场的数量较少，网点不密集，就会影响用户的到达性。从这张图可以看到出湖北省的比例最高，从之前的车辆数量排名看湖北省排名第5，但停车场数量排名第10，停车场数量偏少。你可以在”停车场分布”图中，具体看看武汉市的网站分布。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-a166370441ba3cf5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h1 id="停车场分布"><a href="#停车场分布" class="headerlink" title="停车场分布"></a>停车场分布</h1><p>下图是停车场的分布图，图上标记了全国的停车场的位置，可以自由浏览。以成都市为例，作为西部重点城市，共享汽车的发展和共享单车一样的迅猛。目前GoFun的覆盖面还是比较广，主要集中在人口密集的三环境内、南边的高新区。在西边的郫都区和东边的工业区龙泉也有所分布。但从图中可以看出显然北边和东北方向都没有太多的分布，这也和城市的发展密切相关。在西边的旅游城市都江堰，GoFun也有大量的网点，这也给出行的人带来了丰富的选择。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-61d5417673b5481b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h1 id="车辆流转情况"><a href="#车辆流转情况" class="headerlink" title="车辆流转情况"></a>车辆流转情况</h1><p>下图是三个月内车的使用次数的分布。横坐标是使用的次数，纵坐标是次数对应的车的数量。近似一个正态分布，大约70%的车都在24到72的区间。平均起来每天0.3次到1次左右。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-4f0af88becebd0b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>但使用次数只是运营情况的一种体现。如果每次使用时间比较短，停车时间比较长，对GoFun也不是一个好事。下图展示了停车时长的分布。横坐标代表停车的时长（小时）最长统计到70小时，纵坐标代表有多少车次。从图上峰值是在0到2小时之间。也有连续70小时，也有1000多车次有过这样长的停车时间。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-9ddaeec9d55ef1f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>下图展示了使用时长的分布。横坐标代表停车的时长（小时）最长统计到70小时，纵坐标代表有多少车次。对比停车时长的分布，使用时长的分布比较明显的集中在0到6小时之间，这也是共享出行的特点。由于GoFun有包天的租车服务，所以长期的出行的费用也是可以接受，长达70小时以上的使用时间也有1700多车次。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-5f653e89968572f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h1 id="车的轨迹"><a href="#车的轨迹" class="headerlink" title="车的轨迹"></a>车的轨迹</h1><p>下面这个动画展示了一辆车的直线运动的轨迹。由于我们仅能得到出发、到达地无法获得中间的轨迹，所以只能这样按照直线标注。图上展示最近几个点，以及位置迁移情况。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-fc761ed1bc3cb0ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>#电池电量</p>
+<p>下面这张图展示某一辆车的电池变化情况，其中深色区域代表该车在停车场内没有被使用。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4372317-9a56d823cc98749c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>#总结</p>
+<p>根据以上的分析，GoFun目前的发展势头还是稳步增长。在路上我们也越来越多的看到共享汽车的身影。以成都为例，当停车场数量、车的数量越来越多以后，出行的局限性会变的更少，相信会俘获更多的用户。</p>
+<p>#附件<br>互动报告：<a href="http://www.april1985.com/sharecar_report/report/index.html">http://www.april1985.com/sharecar_report/report/index.html</a><br>报告源代码：<a href="https://github.com/derekhe/sharecar_report" target="_blank" rel="noopener">https://github.com/derekhe/sharecar_report</a></p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2017-12-15-why-i-create-aiflygo/" class="post-title-link">我为什么要开发这款小程序？</a></h2><div class="post-info">Dec 15, 2017</div><div class="post-content"><p>2012年由于家庭的原因，我经常乘飞机往返于成都和广州。每次买机票前我都要观察一段机票的价格，然后再进行购买，但具体什么时候买很多时候都是靠拍脑袋。在买多几次机票后，我发现机票的价格变化还是有一定的规律可行。后来有一本叫做《大数据时代》的书提到了国外的一个Farecast产品，能够预测7天内的票价变化，给出买还是不买的建议。但很遗憾的是多年来国内一直没有相关的产品，这便触发了我做一款类似产品的想法。</p>
 <p>这款产品叫做“爱飞狗旅行”（简称爱飞狗），这个名字来源于英文“aiflygo”。其中的AI也有人工智能的意思。产品的核心价值在于尽最大可能回答“什么时候买机票便宜”。买机票分为两个阶段，第一个阶段是选去哪里、什么时候去， 携程、去哪儿等旅游网站已经解决了这个问题。第二阶段是什么时候买票，各大网站也提供了低价提醒等功能，帮用户预定到更便宜的票。但这些产品的并没有告诉用户最低价位是什么，从而用户很难判断是否应该能够购买，除非多观察几天，但很有可能会错过最佳购票时间。</p>
 <p>为了弥补最后的一环，这款产品首先要解决的问题的是当选定到达地点、出发日期和航班的前提下，什么时候买票最便宜。为免用户出现不会使用的情况，产品设计上我并没有标新立异，而是使用了传统的选择机票的流程。在用户选定了起降地点、时间，根据实时价格选定航班之后，传统的购票流程会显示订票的页面，而“爱飞狗”将会展示关于机票的一些购票提示。</p>
 <p>首先展示的是运用人工智结合大数据预测出的购买建议。购票建议通过历史数据和近期价格波动综合考虑出一个结果，给予用户最快的提示。</p>
@@ -28,126 +150,4 @@
 </ul>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>通过这几幅图可以清楚地看出春节机票的购票规律，如果你需要查询其他几天出行的票价图，请关注微信公众号“爱飞狗”回复“春节”即可。通过这些图确定是否还有更低的价格，对于无折扣的热门航班，较早购买不会亏，而且可以避免机票售罄。对于机票价格较为便宜的航班，提前太长时间购买可能并不划算，可以参考“爱飞狗旅行”的机票价格历史，选择一个合适的购票时间窗口，买到最便宜的机票。</p>
 <p>小程序传送门：<br><img src="http://upload-images.jianshu.io/upload_images/4372317-584feedb7b3e92af.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="gh_d92817984f7d_1280.jpg"></p>
-</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2017-11-28-how-to-buy-airfare/" class="post-title-link">机票大数据分析，揭示购票的秘密</a></h2><div class="post-info">Nov 28, 2017</div><div class="post-content"><p>对于旅游或者探亲来说，买机票的一个最基本的问题是什么时候买能买到最便宜的机票？提前一个月还是一周？知乎上各种旅游攻略上各种“业内人士”也说提前一个月买可能买到最便宜的机票，有些又说提前2个星期买能买到最便宜的机票，事实真的如此么？为了解密机票的定价策略，本文作者做了一个长达一年多的数据收集，通过分析350亿机票价格数据，告诉你机票的各种秘密。</p>
-<h1 id="到底要提前多久能买到最便宜的机票？"><a href="#到底要提前多久能买到最便宜的机票？" class="headerlink" title="到底要提前多久能买到最便宜的机票？"></a>到底要提前多久能买到最便宜的机票？</h1><p>要回答这个问题非常困难 ，因为机票的定价是一个非常复杂的动态的博弈的过程，而且定价由各种因素组合而成。我们买机票也不是一个高频的事件，所以当你需要买机票的时候，很可能观察一两天然后就购买。由于信息不对称，我们根本不知道当前是否最佳购买购票时机，买了以后说不定就惋惜又降价两三百。对于家庭出游来讲，赤裸裸的就少了好几百块钱。但在大数据面前，一切的秘密也不是秘密，将机票价格可视化出来你就会发现一些购票的秘密。</p>
-<h1 id="研究的数据"><a href="#研究的数据" class="headerlink" title="研究的数据"></a>研究的数据</h1><p>北京到广州的航班：</p>
-<ul>
-<li>国航：最早起飞的CA1321，中午起飞的CA1315，晚上最后一班的CA1319</li>
-<li>南航：最早起飞的CZ3166，中午起飞的CZ3112，晚上最后起飞的CZ3000</li>
-</ul>
-<p>价格：观察起飞前45天的价格，并且每天都记录一次<br>时间区间：2016年8月15日 - 2017年11月1日</p>
-<p>下图是CA1321一年的机票价格变化。每一行代表特定出发日期的价格变化，例如第一行代表2016年8月15日起飞的航班的机票价格的变化。一行里，左边离出发日期越近，右边离出发日期越远。第一个方块代表距离出发日期0天（当天）的机票价格，第二格代表距离出发日期1天的机票价格，以此类推，最后一个表示44天前的价格。颜色越深代表价格越高，颜色越浅价格。</p>
-<p>此图很长……请耐心，看不清请看原图……<br><img src="http://upload-images.jianshu.io/upload_images/4372317-27f35fecfe568e70.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="CA1321.png"></p>
-<p>再来看第二张图，这张图是从上一张图做差分得到，目的是显示出涨价、降价的区块。红色的代表涨价，颜色越深涨价越多；灰色表示无价格变动；蓝色代表降价，颜色越深降价越多。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4372317-cc4e36a614a8bad0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="CA1321.png"></p>
-<p>好了，从这两张图能看出点什么呢？请注意，以下分析仅仅针对该航班。</p>
-<h3 id="距离起飞前第9天开始，几乎所有的日期都开始涨价"><a href="#距离起飞前第9天开始，几乎所有的日期都开始涨价" class="headerlink" title="距离起飞前第9天开始，几乎所有的日期都开始涨价"></a>距离起飞前第9天开始，几乎所有的日期都开始涨价</h3><p>最明显的是，距离起飞前第9天开始，几乎所有的日期都开始涨价。请注意图二的坐标为8的那一列。然后到距离起飞前第3天才是，又要涨价一次。所以，如果距离起飞已经只有10多天了，请赶紧购买，涨价是大概率的事情。</p>
-<h3 id="同一个月内的价格调整在同一天完成"><a href="#同一个月内的价格调整在同一天完成" class="headerlink" title="同一个月内的价格调整在同一天完成"></a>同一个月内的价格调整在同一天完成</h3><p>让我们把图缩小一点看看。在图上，我手工画了一些斜线，你可以看到价格再那里发生了变化。但每个斜线都是45度，意味着这是在同一天发生的价格调整。举个例子，4月份的价格调整，可以通过斜线看出。所以4月2号的机票，提前25天到10天左右买是可以买到较为便宜的，而4月3号的提前26天到10天左右，以此类推，4月16号的以前差不多一个月到10天都可以。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4372317-c720ad4354f881a4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="CA1321.jpg"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4372317-2b466646359cd60d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="CA1321_4月"></p>
-<p>而六月份的就不太一样，需要叠加节假日的因素，6月5、6、7日为周日、周一、周二，价格相对较高，所以调价的是涨价。购买这几天的机票就要提前更早买比较合适。而随后的8,9,10为周三、周四、周五，价格相对较低，所以是降价。航空公司估计是这样来平衡收益。<br><img src="http://upload-images.jianshu.io/upload_images/4372317-f2d19c82eb260577.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="CA1321_6月"></p>
-<h3 id="起飞时间是周几对价格影响"><a href="#起飞时间是周几对价格影响" class="headerlink" title="起飞时间是周几对价格影响"></a>起飞时间是周几对价格影响</h3><p>在上一节已经涉及到了周几起飞的价格影响。我再来画几条线，一看你就明白。价格的涨跌一目了然。对这个航班而言，周日到周二是票价相对较高的区间，周三到周六是较低的区间。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4372317-6801777df831ff58.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="CA1321"></p>
-<h3 id="早班中班晚班的对比"><a href="#早班中班晚班的对比" class="headerlink" title="早班中班晚班的对比"></a>早班中班晚班的对比</h3><p>对早中晚几个航班，可以明显的看出：</p>
-<ul>
-<li>在价格方面：早班的航班价格较贵（整体颜色深），中班适当，晚班的较便宜（整体颜色浅）。</li>
-<li>调价：参考之前的斜线，不同时段航班的调价也几乎都是同一时间发生。</li>
-</ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/4372317-3fc4e265b2a04472.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="国航.jpg"></p>
-<h3 id="发现淡季和旺季"><a href="#发现淡季和旺季" class="headerlink" title="发现淡季和旺季"></a>发现淡季和旺季</h3><p>根据颜色的深浅及颜色的变化即可判断出淡季旺季，基本规律大致相同，大假附近几乎会上涨，寒假、暑假、过年期间价格也较高。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4372317-165f974113a38e89.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="CA1321_季节.jpg"></p>
-<h3 id="南航航班和国航对比"><a href="#南航航班和国航对比" class="headerlink" title="南航航班和国航对比"></a>南航航班和国航对比</h3><p>不同航空公司的定价不相同，但类似的调价措施似乎有一定的参考。南航的缩小图见下，可以看出一些斜线的区域，显然是遵循了一样的调价规律。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4372317-44e5b08c5aff4d7e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="南航.jpg"></p>
-<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><p>决定什么时候出发，相关的工具必不可少。各大OTA网站：携程、去哪儿、飞猪、同程，各大官网，这些就不用多说吧。</p>
-<p>决定什么时候买，通常我们会查看票价历史来做决定。目前还没有工具能够查询到历史的票价。针对这个问题我们开发了一个小程序帮忙查询到历史票价，微信小程序搜索“爱飞狗旅行”即可使用。</p>
-<p>查看价格波动情况和购票建议。近期的价格波动情况可以很清楚的看到，当票价已经上涨了并且临近起飞日期了，请赶紧购票。<br><img src="http://upload-images.jianshu.io/upload_images/4372317-0090bc826b2f20eb.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/320" alt="爱飞狗旅行"></p>
-<p>价格预测及最低价格，此航班提示明年春节购票最好提前7到9周。公历和农历对齐可以很方便的对齐去年的节假日。<br><img src="http://upload-images.jianshu.io/upload_images/4372317-9596ea89a1c78390.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/320" alt="爱飞狗旅行"></p>
-<p>最后可以在上述OTA网站订阅一个低价预约，出现预约后就可以购票了。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>其实航空公司的票价策略还是有规律可寻，当有一定数据量并且可视化出来以后就更容易发现规律。利用适当的工具能够帮我们选择。春节即将到来，请尽早决定并持续关注价格历史，祝您买到一张便宜的回家的机票。</p>
-</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2017-11-27-stop-pairing/" class="post-title-link">请停止结对编程！</a></h2><div class="post-info">Nov 27, 2017</div><div class="post-content"><p>（根据真实事件改编，情节有所夸张，请勿对号入座。）</p>
-<p>这是一个风和日丽的星期五下午，Ben和Martin本应该在Costa咖啡馆喝一杯下午茶，一起聊聊周末的计划，然而PM的一个微信通知打乱了这一切。原来产品出现了一个bug需要紧急修复，下班之前必须要搞定。两人收到消息疾步走回到岗位，也没了心情去喝刚泡好的咖啡，连忙打开邮箱查看问题报告。</p>
-<p><a href="http://insights.thoughtworks.cn/wp-content/uploads/2018/01/1.jpeg" target="_blank" rel="noopener"><img src="http://insights.thoughtworks.cn/wp-content/uploads/2018/01/1.jpeg" alt=""></a></p>
-<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><blockquote>
-<p><strong>Ben：</strong>看来这不是一个很大的问题，就是处理一个来自于远端服务的异常。现在的情况是BFF(backend for frontends)在内部的远端服务有异常，会将异常直接返回到客户端，这样只要一个保单出了问题，前端所有的保单也都没法用了。</p>
-<p><strong>Martin：</strong>那怎么解决？</p>
-<p><strong>Ben：</strong>感觉可以在异常的地方加一个异常处理。这个涉及到RxJava和Java8的stream特性，我不是太熟悉，要不我们一起Pair吧</p>
-<p><strong>Martin：</strong>好。</p>
-</blockquote>
-<p>两人喝了一口炙热的咖啡，摆好键盘鼠标，打开了IntelliJ工程。几分钟后，这个故障重现了。</p>
-<blockquote>
-<p><strong>Martin：</strong>可以重现的故障通常比较好解决。我们在这里先弄个try…catch试试。 两人似乎很有信心，然而重启项目后，故障并没有按照预期停下来。</p>
-<p><strong>Ben：</strong>hmm，这里为什么停不下来呢？</p>
-<p><strong>Martin：</strong>可能是RxJava的延迟处理，没有正确的捕捉到。这样，你在这里再写一个逻辑，然后在这里设个断点……</p>
-</blockquote>
-<h3 id="焦急"><a href="#焦急" class="headerlink" title="焦急"></a>焦急</h3><p>在这个过程中，Martin只是对着屏幕指指点点，时不时看看手机、在微信上聊聊天。Ben对RxJava并不是很熟悉，他想紧紧跟随Martin的思路，然而增加多个逻辑以后，依然都不能解决问题。15分钟已经过去，Ben这时候心生怀疑，是不是哪些地方没弄对？</p>
-<blockquote>
-<p><strong>Ben：</strong>我们理一下思路看看？</p>
-<p><strong>Martin：</strong>恩，来吧，一起看一下代码。</p>
-</blockquote>
-<p>Martin领着Ben一起看了一下代码，并且一直在旁边指点Ben进行单步调试。由于RxJava的延迟特性，使得断点很难设置。而抛出异常的调用栈会出现在某些莫名其妙的地方，这让他们根本不知道把try…catch放在哪里才能奏效。</p>
-<blockquote>
-<p><strong>Ben：</strong>可能是要这样，在这里加一个OnError看能不能解决。</p>
-</blockquote>
-<p>看似问题能够解决，其实是又一次的失败。在两人的激烈讨论中，时间过得很快，一晃眼已经是1个小时以后，咖啡早已经凉了，然而两个人完全没有心情，甚至都忘了咖啡的存在。</p>
-<p>Ben对Martin的解决方案越来越没有信心，两人开始重新讨论起解决方案。然而方案是越讨论越复杂，看起来想在下班前解决这个问题是不可能了，通宵是必然了。</p>
-<h3 id=""><a href="#" class="headerlink" title=""></a><a href="http://insights.thoughtworks.cn/wp-content/uploads/2018/01/2.jpeg" target="_blank" rel="noopener"><img src="http://insights.thoughtworks.cn/wp-content/uploads/2018/01/2.jpeg" alt=""></a></h3><h3 id="简化"><a href="#简化" class="headerlink" title="简化"></a>简化</h3><p>Zen是组里的Tech Lead，今天在忙另外一个事情。这个周五真是不得安宁，恨不得想到美国去过过昨天。</p>
-<p>Zen听到两个人的讨论，虽然并不了解这个问题的细节，但直觉上认为是跑偏了。马上提醒Ben和Martin：</p>
-<blockquote>
-<p>这不是一个很难的问题，我感觉你们想复杂了？是不是走偏了？能给我说一下你们怎么想的么？</p>
-</blockquote>
-<p>被Zen打断的Martin说了一下之前的解决方案，也说试过了其他的方案了，都不行。由于Zen对这个事情也不是很了解，所以只是提了一个醒：</p>
-<blockquote>
-<p>“Keep it simple，别把事情整复杂了。”</p>
-</blockquote>
-<p>两个人的讨论依然在继续，Ben有点无法跟上Martin的思路，艰难地写着代码，但每次都不对。Pair的气氛犹如冬日里冰冷的咖啡一样凝结，不知道孰是孰非。Ben已经有些不高兴，Martin则依然在一旁指指点点但并不动手。</p>
-<p>Zen一看表已经3点钟了，又插了一句嘴：</p>
-<blockquote>
-<p>Martin，既然你对这个更熟悉，你来操刀吧。你来写代码吧。</p>
-</blockquote>
-<p>可能由于之前的讨论过于激烈，Martin反驳Zen：</p>
-<blockquote>
-<p>我们在Pair啊，他对RxJava不熟悉，我应该指导他。我看着他写就可以了。</p>
-</blockquote>
-<p>Zen说，</p>
-<blockquote>
-<p>你们的解决方案是什么，给我看看。</p>
-</blockquote>
-<p>解释了一通以后，Zen也没有更多的想法，就让他们继续吧。但Zen建议道：</p>
-<blockquote>
-<p>在这个紧要的关头，我们应该改变一下Pair的方式。现在不是教授知识，而是要高效的解决问题。在这种压力的情境下，你可以直接实现自己的思路，带着别人飞就好了。</p>
-</blockquote>
-<h3 id="-1"><a href="#-1" class="headerlink" title=""></a><a href="http://insights.thoughtworks.cn/wp-content/uploads/2018/01/3.jpg" target="_blank" rel="noopener"><img src="http://insights.thoughtworks.cn/wp-content/uploads/2018/01/3-1024x683.jpg" alt=""></a></h3><h3 id="分歧"><a href="#分歧" class="headerlink" title="分歧"></a>分歧</h3><p>Martin稍微冷静了下，拿过键盘，继续开始修复问题。Ben这时候在一旁观察，也适当的休息一下，之前手忙脚乱的按F8、F9的神经也得以缓和。</p>
-<blockquote>
-<p>Ben：看来还是不行。我们再理一下代码吧。</p>
-<p>Martin：你说的这些我之前都试过，都不行，要这样才行。</p>
-<p>Ben：我说的是这样做的，既然我们还没讨论清楚，我们再来看一下代码吧。</p>
-</blockquote>
-<p>两人拿出了纸和笔，对着屏幕一边画一边讨论，然而Ben并不认可Martin的方案，说要采用另外个方案。Martin则坚持认为这是一个可行的方案，得试试。Ben拿过键盘，准备按照Martin的方案写代码，但心里面颇为不爽，一直在想说服Martin采用他的方案试试。</p>
-<h3 id="怒气"><a href="#怒气" class="headerlink" title="怒气"></a>怒气</h3><p>到此时，时间都已经不知不觉过去两个小时了，然而问题似乎离真相总是忽远忽近。两个人已经疲劳不堪，再加上解决方案的不一致，两人的言语中开始显露出一些怒气。</p>
-<p>Zen在运行测试的空档，打断了两人的对话，建议道：</p>
-<blockquote>
-<p>既然大家已经产生了分歧，要不然两个人分开，各自实现一个，看谁能够先实现，然后再来讨论。</p>
-</blockquote>
-<p>Martin对于Zen并不认同，认为Zen指责他和Ben没有Pair好。</p>
-<p>Zen解释道：</p>
-<blockquote>
-<p>其实我听出了两人意见的不统一，言语中已经有一些怒火，这样下去Pair的效率很低。首先，大家带着不爽来干活，互相质疑。更关键的是，解决问题已经用去了两个多小时，大家都比较疲惫，可以适当休息。我让你们分开的目的是让大家冷静一下，在不受打扰的情况下工作一段时间，可能会不一样。</p>
-</blockquote>
-<h3 id="冷静"><a href="#冷静" class="headerlink" title="冷静"></a>冷静</h3><p>Martin回到了电脑面前，按照他的思路一步一步做下去。Ben去上了个厕所，倒掉了那杯冷冰冰的咖啡，泡了杯热茶。回到电脑前专注的重新按照他的思路一步一步走下去。</p>
-<p>其实两个人已经接近了真相，只是这之间不停的对话把注意力消耗殆尽。两人企图达到一个统一，然而口头的对话并不能解决问题，反而暂缓了这个过程。</p>
-<p>10分钟后，Ben兴高采烈的说已经搞出来了一套可以运行的方案，叫Martin一同过来看看。Ben的临时解决方案比较简单好理解，但并不完美。熟悉RxJava的Martin指出了一些可以改进的地方。</p>
-<p>然后两人又开始了新一轮的Pair，重新将这个方案完善。有了这个基础的解决方案，两人都很高兴，是朝着一个正确的方向大步向前。</p>
-<h3 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h3><p>下午6点半，虽然比正常下班晚了半个多小时，但还好整个解决方案都正常了，交付的任务也顺利完成。</p>
-<p>Ben和Martin都总结道，我们应该停止结对，当：</p>
-<ul>
-<li>两人的思路不统一但无法说服对方时：我们可以考虑分开一阵，安静一下，各自用可运行的代码来证明思路的可行。这里只需要相对粗糙的代码即可。</li>
-<li>时间已经超过番茄时间而感到疲惫时：人的专注力是有限的，在Pair时非常累，特别是在能力方面存在较大差距的时候。在这时候我们可以试试番茄工作法，让大脑得到休息。</li>
-<li>注意力不集中或者有其他事务要处理时：在Pair的时候，彼此要尊重对方，不要玩手机、看其他无关的网页，除非事先取得别人的同意，否则就要等到停止结对、处理完事务后再继续。</li>
-</ul>
-<hr>
-<p></p>
-</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2017-07-15-share-bike-crawler/" class="post-title-link">共享单车数据爬虫</a></h2><div class="post-info">Jul 15, 2017</div><div class="post-content"><p>在线实时查看共享单车的位置，并提供了API供调用，方便进行研究，<a href="http://www.dancheditu.com/" target="_blank" rel="noopener">请查看体验</a></p>
-<p>完整体验请在电脑上打开，手机可能显示不完整。由于时间所限，IE浏览器不兼容，请用chrome类似的浏览器。</p>
-<p>服务器在海外，加载速度可能不理想，请耐心等待。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4372317-44b99c22b2d84d43.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="单车地图"></p>
 </div></article></div></div></div><div id="sidebar" class="left"><div id="about-panel"><div class="info"><div class="title">he.sicong</div><div class="url">http://www.april1985.com</div><div class="bio"></div></div><img src="/images/avatar.png" class="avatar"></div><div id="friend-links-panel"><div class="panel-title"><p>LINKS</p></div><a target="_blank" class="link-item"><div class="link-container"><div class="site-name">GitHub</div><div class="site-desc">http://github.com/derekhe</div></div></a><a target="_blank" class="link-item"><div class="link-container"><div class="site-name">简书</div><div class="site-desc">http://www.jianshu.com/u/b1e713e56ea6</div></div></a><a target="_blank" class="link-item"><div class="link-container"><div class="site-name">LinkedIn</div><div class="site-desc">https://www.linkedin.com/in/sicong-he-56a95437/</div></div></a></div></div></div><div class="clear"></div></main><footer class="footer-container"><div class="paginator"><a href="/page/2/" class="next">NEXT</a></div><div class="copyright"><p>© 2008 - 2018 <a href="http://www.april1985.com">he.sicong</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/AngryPowman/hexo-theme-prontera" target="_blank">hexo-theme-prontera</a>.</p></div></footer><script>var _mtac = {}; (function() {     var mta = document.createElement("script"); mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.2";    mta.setAttribute("name", "MTAH5");    mta.setAttribute("sid", "500490740");    var s = document.getElementsByTagName("script")[0];    s.parentNode.insertBefore(mta, s);})();</script></body></html>

@@ -1,4 +1,25 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> APRIL 1985</title><meta name="description" content="A Blog Powered By Hexo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/prontera.css"><link rel="search" type="application/opensearchdescription+xml" href="http://www.april1985.com/atom.xml" title="APRIL 1985"></head><body><header class="feature-header"><nav class="component-nav"><ul><div class="logo-container"><a href="/"><h2 class="title">APRIL 1985</h2></a></div><a href="/" target="_self" class="li component-nav-item"><p>现在</p></a><a href="/archives" target="_self" class="li component-nav-item"><p>曾经</p></a><ul class="shortcut-icons"><a href="https://github.com/derekhe" target="_blank"><img src="/images/github.svg" class="icon"></a><a href="/atom.xml" target="_blank"><img src="/images/rss.svg" class="icon"></a></ul></ul></nav></header><main class="container"><div id="body-container"><div id="post-list" class="left"><div class="home post-list"><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2009-07-28-finally-back-from-zhejiang/" class="post-title-link">终于从浙江回来了</a></h2><div class="post-info">Jul 28, 2009</div><div class="post-content"><p>说了几个月的去浙江去浙江拖啊拖，上星期终于去了，去了就好了，去了事情就了了，也好轻松轻松了。</p>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> APRIL 1985</title><meta name="description" content="A Blog Powered By Hexo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/prontera.css"><link rel="search" type="application/opensearchdescription+xml" href="http://www.april1985.com/atom.xml" title="APRIL 1985"></head><body><header class="feature-header"><nav class="component-nav"><ul><div class="logo-container"><a href="/"><h2 class="title">APRIL 1985</h2></a></div><a href="/" target="_self" class="li component-nav-item"><p>现在</p></a><a href="/archives" target="_self" class="li component-nav-item"><p>曾经</p></a><ul class="shortcut-icons"><a href="https://github.com/derekhe" target="_blank"><img src="/images/github.svg" class="icon"></a><a href="/atom.xml" target="_blank"><img src="/images/rss.svg" class="icon"></a></ul></ul></nav></header><main class="container"><div id="body-container"><div id="post-list" class="left"><div class="home post-list"><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2009-08-02-too-many-things-to-do/" class="post-title-link">Too many things to do</a></h2><div class="post-info">Aug 2, 2009</div><div class="post-content"><p>These days, after my back to Chengdu, were rainy every day. Temperature got very cool like in Autumn. In this comfortable weather, all the things I wish to do was to have a good sleep.</p>
+<p>But I’m in bad luck, I have quite a lot of stuff to be done.</p>
+<p>The first one is to complete the software for PCB Drill &amp; Route machine. I need to be hurry. If I had my work done early, I could have a trip to LiJiang. I worked hard till very night hoping every piece of the program run smoothly. It was a tough work. The more you wanted it to be correct the worse it got. Computer could only know the logic, but your emotion. So, the best bet, I’m sure, was to calm done.</p>
+<p>The second is to study English. I admitted that I didn’t work hard on this subject as before. I also noticed that my oral English regressed because of the lack of enough practice. What should I do next? Perhaps I must start a plan to balance the work time and study time.</p>
+<p>It seems that there were only two things to do, but they occupied all my time. How can things get better? I think I must make a plan in my mind to work effectively, and study effectively now.</p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2009-08-01-raysource-with-netlimiter-thoroughly-clean-up-a-lot-of-upload-bandwidth/" class="post-title-link">用NetLimiter彻底收拾RaySource大量上传带宽占用</a></h2><div class="post-info">Aug 1, 2009</div><div class="post-content"><p>最近“早泄”和“漏点”的Windows 7镜像大多数是RayFile网盘承载的，需要下载一个客户端软件——RaySource。作为P2P软件，上传共享是必不可少的，但是RaySource做得太过分了。软件里面虽然有设置下载带宽和上传带宽，但是下载的时候，你永远看到的都是上传0KB/s，你会发现你的ADSL网络变得特别的卡，上传带宽几乎耗尽，那简直是比迅雷性质还恶劣的软件。</p>
+<p>我检查了一下RaySource的后台文件Peer.exe，杀了以后上传下载都不行了。RaySource就是一个界面而已，并不做任何的实际上下载动作。</p>
+<p>为了能够将带宽限制住，我首先尝试了有名的“P2P终结者”。但最后试用的结果很令人沮丧，依然不能限制上传带宽。</p>
+<p>后来在上网搜索了很久，发现了一款<a href="/images/others/rpc.jpg"></a><img src="/images/others/image/thumb/rpc.jpg" alt=""></p>
+<p>随后会进入NetLimiter的主程序界面。</p>
+<p><a href="/images/others/netlimiter.jpg"></a><img src="/images/others/image/thumb/netlimiter.jpg" alt=""></p>
+<p>找到peer.exe一行，将Outgoing下面的Limit一栏打上勾，并点击旁边的默认5.00输入实际需要的数值。我这里输入20.0，因为家里面上传带宽最大50KB/s，还要分给其他程序用。</p>
+<p>最后如果想全局限制上传带宽，在你的计算机名(这里是Derekhe-pc)一行的Limit里面填入所需要的数值即可。</p>
+<p>这样处理以后，整个网络的速度明显变快了。</p>
+<p>小知识：</p>
+<p>ADSL网络由于下载和上传不对称，会造成上传带宽吃紧，而现在大多数P2P软件都是用TCP/IP协议会上传带宽中有一部分TCP/IP的握手包和校验包，而这些包如果被其他包占用了，会延迟下载中的TCP/IP包的确认，进而影响下载速度。更为严重是如果超过了一定的时间没有得到确认，那么下载得到的TCP/IP包会被丢弃。最终的效果就是，整个网络变得特别卡。所以在ADSL网络中，将上传带宽限制实际上传带宽的80%效果会比较好。</p>
+<p>如何测试最大上传带宽呢？方法是找一个很快的服务器，然后上传一个大文件，看看NetLimiter的上传速度即可。</p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2009-08-01-windows-7/" class="post-title-link">Windows 7</a></h2><div class="post-info">Aug 1, 2009</div><div class="post-content"><p>昨天用RayFiles下载了Windows 7的光盘镜像，网上也已经出现了N多的破解办法，Windows 7就这样“泄漏了”(似乎IT界很喜欢“泄”和“漏”)。下载了归下载，还没有时间装上。</p>
+<p>我在找AutoCAD的光盘的时候突然发现了Vista的Beta 1的光盘，想当年也是无数的泄露，无数的猜疑，无数的激动人心，最终等来了Vista。但今年的Windows 7却没有太令我激动。也许是Vista已经用的很好的，也没有必要装Windows 7，另一方面，我看到Windows 7的截图，任务栏的样子着实让人大跌眼睛。</p>
+<p>估计再过段时间有空了，我会把Windows 7装上，再看看软件的兼容性。</p>
+<p>像Windows 7这样的软件、游戏，我倒是下载了不少，最近确实也没有时间去尝鲜，先把正事做好了再说。最近成都一直下雨，天气很凉快，和秋天一样，睡觉也特别舒服，早上真想多躺一会儿。</p>
+</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2009-07-28-finally-back-from-zhejiang/" class="post-title-link">终于从浙江回来了</a></h2><div class="post-info">Jul 28, 2009</div><div class="post-content"><p>说了几个月的去浙江去浙江拖啊拖，上星期终于去了，去了就好了，去了事情就了了，也好轻松轻松了。</p>
 <p>7月23号出发的，晚上8点30的飞机，我们6点就早早的到了机场。按照通常的规律，晚上的飞机都是要晚点的，结果果不其然，8点30的飞机最终9点45左右才开始登记。去年在双流机场也是晚上飞机晚点，无聊的时候就打开手机的WiFi上上无线网络，但这次怎么也玩不了。CMCC接入点可以用，但是要付费的，FreeWifi接入点怎么也用不了。后来问了保安得知，机场有免费上网的地方，还是电脑上的。有这等好事？机器恐怕已经被占满了吧。按照保安所指方向，最终找到了提供免费上网的携程的柜台。</p>
 <p>这里虽然提供免费上网，但很冷清，有6个笔记本电脑，上网只能站着。我们学机械的天天调机床从早上站到下午，这一两个小时那是小意思。我问了一下，携程的会员是可以享受这个服务的。服务员帮我输入了手机号码和密码，上了网，速度还蛮不错的。我把同行的老师和博士叫过来一起上网，中间有一个小插曲，让我得知原来上网不用验证就可以。博士生也是会员但是没有激活过，所以一直没法登陆，最后服务员小声的说了句：“你输入网址就可以上网了”。原来是这么回事，也就是说根本不用验证了，我说我不上的时候怎么没有任何注销的手续呢。呵呵，看到我这篇日记的朋友下次到成都双流机场候机的时候也不妨去玩玩，别说是我告诉你的哟~</p>
 <p>在这候机的两个多小时里，我下了putty把wiki网站研究了一下。电脑上没有装QQ，倒也好办，直接用WebQQ搞定。这两个小时还算没有浪费。</p>
@@ -21,58 +42,4 @@
 <p>咨询了机场工作人员得知在有一个免费的上网的地方。嘿嘿，是不是哟。赶紧过去看看。是携程提供的免费上网，还是可以，网速比较快。开始还以为要登陆呢，后来才发现登陆就是一个摆设罢了，输入地址随便用就是了。</p>
 <p>上网地方没有座位，电脑位置也比较低，可能是故意让你觉得不方便免占用太久的时间。还好我们这些机械出生的天天调机床，也没有座位的，已经练就了一身硬功夫。也就两个多小时嘛，在那儿无聊也是无聊。</p>
 <p>期望晚上能够在飞机上或者车上就睡着了，有点累了~。</p>
-</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2009-07-22-chengdu-2009-total-solar-eclipse/" class="post-title-link">成都2009日全食</a></h2><div class="post-info">Jul 22, 2009</div><div class="post-content"><p>我早在6月就已经听说日全食这个事情了，等到了7月22号前几天，成都的天气那是很糟糕啊，又是下雨又是闷热。天天都在祈祷22号天气好一点点，结果今天一大早上一起来，天阴阴沉沉的，看来是看不成了。好吧，就看电视直播好了。等到八点半突然下起了雨，我猜这下是彻底玩完了。</p>
-<p><a href="/images/2009-7-22/IMG_2368.JPG"></a><img src="/images/2009-7-22/image/thumb/IMG_2368.JPG" alt=""></p>
-<p>等到快要九点的时候，吴老师发短信过来说他看到了隐藏于云层缝隙之间的太阳，我赶紧收拾到苏坡立交旁边的一个人行天桥，赶过去架好摄像机已经快到到9点11了，这时天色已经快要暗下来了。</p>
-<p><a href="/images/2009-7-22/IMG_2375.JPG"></a><img src="/images/2009-7-22/image/thumb/IMG_2375.JPG" alt=""></p>
-<p><a href="/images/2009-7-22/IMG_2376.JPG"></a><img src="/images/2009-7-22/image/thumb/IMG_2376.JPG" alt=""></p>
-<p><a href="/images/2009-7-22/IMG_2377.JPG"></a><img src="/images/2009-7-22/image/thumb/IMG_2377.JPG" alt=""></p>
-<p><a href="/images/2009-7-22/IMG_2378.JPG"></a><img src="/images/2009-7-22/image/thumb/IMG_2378.JPG" alt=""></p>
-<p>路灯都有一部分打开了。出门的时候把手机也带上的，听收音机里面说快要到了。视频时从9点7分的时候开始拍的，在4分钟以后(视频大概在3分29秒)，天色忽然就暗下来了。</p>
-<p><a href="/images/2009-7-22/IMG_2380.JPG"></a><img src="/images/2009-7-22/image/thumb/IMG_2380.JPG" alt=""></p>
-<p><a href="/images/2009-7-22/IMG_2381.JPG"></a><img src="/images/2009-7-22/image/thumb/IMG_2381.JPG" alt=""></p>
-<p><a href="/images/2009-7-22/IMG_2382.JPG"></a><img src="/images/2009-7-22/image/thumb/IMG_2382.JPG" alt=""></p>
-<p><a href="/images/2009-7-22/IMG_2383.JPG"></a><img src="/images/2009-7-22/image/thumb/IMG_2383.JPG" alt=""></p>
-<p><a href="/images/2009-7-22/IMG_2384.JPG"></a><img src="/images/2009-7-22/image/thumb/IMG_2384.JPG" alt=""></p>
-<p>虽然这时候太阳也不见个影子，但还是觉得很特别。一来是感觉很好玩，二来是感觉特别震撼。立刻就进入了黑夜。再没过几分钟，又忽然明亮了起来(视频大约在7分19秒)，又进入了白天。但可怜的太阳啊，一个影子都没有啊，今天貌似只有月亮的影子了，呵呵。</p>
-<p><a href="/images/2009-7-22/IMG_2385.JPG"></a><img src="/images/2009-7-22/image/thumb/IMG_2385.JPG" alt=""></p>
-<p><a href="/images/2009-7-22/IMG_2386.JPG"></a><img src="/images/2009-7-22/image/thumb/IMG_2386.JPG" alt=""></p>
-<p>过了许久，也没见太阳影子，算了吧，撤退。</p>
-<p><a href="/images/2009-7-22/IMG_2390.JPG"></a><img src="/images/2009-7-22/image/thumb/IMG_2390.JPG" alt=""></p>
-<p>回到家一阵子，电视直播突然播出了成都的视频，是不是哦，还能看到哦？立刻拿着摄像机和照相机跑去出，哟，从云层之间的漏洞看到了太阳了。这时候已经快要接近结束了，月亮只有遮盖了1/5的面积了，但是阳光依然很刺眼，很热。我们用的电焊的护目镜看起来也是很刺眼的，看来普通的墨镜肯定不起作用。</p>
-<p><a href="/images/2009-7-22/IMG_2394.JPG"></a><img src="/images/2009-7-22/image/thumb/IMG_2394.JPG" alt=""></p>
-<p><a href="/images/2009-7-22/IMG_2395.JPG"></a><img src="/images/2009-7-22/image/thumb/IMG_2395.JPG" alt=""></p>
-<p>还好啦，就几分钟的时间，太阳就躲了回去，后来又出来了一次，可是已经几乎复原了，没有啥意思了。</p>
-<p>这就是我们成都的这次日全食，还真是郁闷的鬼天气作祟，羡慕武汉和杭州的市民能够领略到这几百年一遇的天象奇观。</p>
-</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2009-07-19-google-no-longer-to-advertise-the/" class="post-title-link">不再给Google打广告了</a></h2><div class="post-info">Jul 19, 2009</div><div class="post-content"><p>前些日子把以前开通又一直没怎么用的Adsense账号又用起来了。WordPress还是挺方便的，装了个Easy Adsense插件稍微配置配置就搞定了。似乎以前这个账号已经被浏览了7000多次，我的收入是0.10$每千次，算下来也就0.8$，真少啊……要靠我这个站到达10$，不知道要天荒地老了。</p>
-<p>我也算是比较讨厌广告这个东西的了，装Firefox都要安装Adblock Plus插件并且订阅针对中国的广告的列表。这样上网清净了许多，也少了很多漂浮不定、闪闪烁烁的广告。好吧，既然我也是讨厌广告的，那么，还是不要弄广告好了，反正也不值几个钱，前段时间就算免费给Google打工了好了。</p>
-<p>周一，恢复正常作息，每天还是要去METEN，要不然口语又要生疏了。周三，日食，期望天气大好~</p>
-</div></article></div><div class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/post/2009-07-11-solution-virtualbox-3-0-fails-to-install-windows-2000/" class="post-title-link">解决VirtualBox 3.0安装Windows 2000失败</a></h2><div class="post-info">Jul 11, 2009</div><div class="post-content"><p>最近在试用VirtualBox 3.0遇到了极大的问题，Windows 2000没法顺利安装，表现为在安装的最后阶段出现虚拟机自动重启的现象。我原来以为是IOAPIC等配置的原因，结果一一试过后都不能解决问题。最后只有在Bug系统上报告这个问题了(<a href="http://www.virtualbox.org/ticket/4474" target="_blank" rel="noopener">http://www.virtualbox.org/ticket/4474</a>)</p>
-<p>今天一回来就得到了回复，很快，就一句话：</p>
-<p>This is documented in the manual. There’s a workaround mentioned in chapter 11 iirc.</p>
-<p>果然，我找到了原文如下：<a href="http://www.virtualbox.org/manual/UserManual.html#id2531590" target="_blank" rel="noopener">http://www.virtualbox.org/manual/UserManual.html#id2531590</a></p>
-<p>&gt;</p>
-<blockquote>
-<h3 id="Windows-2000-installation-failures"><a href="#Windows-2000-installation-failures" class="headerlink" title="Windows 2000 installation failures"></a>Windows 2000 installation failures</h3><p>When installing Windows 2000 guests, you might run into one of the       following issues:</p>
-<ul>
-<li>Installation reboots, usually during component           registration.</li>
-<li>Installation fills the whole hard disk with empty log           files.</li>
-<li>Installation complains about a failure installing           <code>msgina.dll</code>.<br>These problems are all caused by a bug in the hard disk driver of       Windows 2000. After issuing a hard disk request, there is a race       condition in the Windows driver code which leads to corruption if the       operation completes too fast, i.e. the hardware interrupt from the IDE       controller arrives too soon. With physical hardware, there is a       guaranteed delay in most systems so the problem is usually hidden there       (however it should be possible to reproduce it on physical hardware as       well). In a virtual environment, it is possible for the operation to be       done immediately (especially on very fast systems with multiple CPUs)       and the interrupt is signaled sooner than on a physical system. The       solution is to introduce an artificial delay before delivering such       interrupts. This delay can be configured for a VM using the following       command:</li>
-</ul>
-<p>VBoxManage setextradata VMNAME “VBoxInternal/Devices/piix3ide/0/Config/IRQDelay” 1</p>
-<p>This sets the delay to one millisecond. In case this doesn’t help,       increase it to a value between 1 and 5 milliseconds. Please note that       this slows down disk performance. After installation, you should be able       to remove the key (or set it to 0).</p>
-<p>Windows 2000 安装失败</p>
-</blockquote>
-<p>当作为客户端安装Windows 2000时，你可能回遇到如下的问题：</p>
-<ul>
-<li>安装重启，通常发生在组件注册这个环节</li>
-<li>安装将整个磁盘用空的日志文件塞满</li>
-<li>安装时报告安装msgina.dll失败</li>
-</ul>
-<p>这些问题都是由Windows 2000的硬盘驱动的一个bug造成。在一个磁盘请求以后，在Windows的驱动中会出现一种竞争状态， 这种状态将会导致崩溃如果操作完成得过于迅速，例如来自于IDE控制器的硬件终端来得太快。在物理硬件上，在大部分系统上都有有一个可以得到保证的延迟， 所以这个问题通常隐匿了起来(但是在物理硬件上也可能可以重现)。在虚拟环境中，操作系统可能会立刻完成这个请求(特别是在非常快的多CPU环境中)并且 中断信号会比物理系统上来的早。解决方案是在这种中断前加人为的延迟。这种延迟可以使用下面的命令进行配置：</p>
-<p>&gt;</p>
-<blockquote>
-<p>VBoxManage setextradata VMNAME “VBoxInternal/Devices/piix3ide/0/Config/IRQDelay” 1</p>
-</blockquote>
-<p>这将设置1毫秒的延迟。如果这都还不能解决问题，增加这个值于1到5毫秒之间。注意这会降低磁盘性能。在安装完以后，你可以将这个键值去掉(或者设置为0)<br>补充：VBoxManage命令在你的VirtualBox目录下面，在运行中输入cmd然后切换到VirtualBox目录就可以操作了。</p>
 </div></article></div></div></div><div id="sidebar" class="left"><div id="about-panel"><div class="info"><div class="title">he.sicong</div><div class="url">http://www.april1985.com</div><div class="bio"></div></div><img src="/images/avatar.png" class="avatar"></div><div id="friend-links-panel"><div class="panel-title"><p>LINKS</p></div><a target="_blank" class="link-item"><div class="link-container"><div class="site-name">GitHub</div><div class="site-desc">http://github.com/derekhe</div></div></a><a target="_blank" class="link-item"><div class="link-container"><div class="site-name">简书</div><div class="site-desc">http://www.jianshu.com/u/b1e713e56ea6</div></div></a><a target="_blank" class="link-item"><div class="link-container"><div class="site-name">LinkedIn</div><div class="site-desc">https://www.linkedin.com/in/sicong-he-56a95437/</div></div></a></div></div></div><div class="clear"></div></main><footer class="footer-container"><div class="paginator"><a href="/page/38/" class="prev">PREV</a><a href="/page/40/" class="next">NEXT</a></div><div class="copyright"><p>© 2008 - 2018 <a href="http://www.april1985.com">he.sicong</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/AngryPowman/hexo-theme-prontera" target="_blank">hexo-theme-prontera</a>.</p></div></footer><script>var _mtac = {}; (function() {     var mta = document.createElement("script"); mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.2";    mta.setAttribute("name", "MTAH5");    mta.setAttribute("sid", "500490740");    var s = document.getElementsByTagName("script")[0];    s.parentNode.insertBefore(mta, s);})();</script></body></html>
